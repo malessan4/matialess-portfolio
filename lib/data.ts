@@ -9,11 +9,11 @@ export const projectsData: Project[] = [
     {
         title: "Mediapp",
         description: "Creacion de una aplicación web para la gestión de historias médicas. La aplicación permite a un usuario autorizado a crear historias clinicas, chequear estudios y consultas anteriores. Cumpliendo con las normativas de seguridad y privacidad de datos.",
-        tags: ["Go", "React", "TypeScript", "Tailwind CSS"]
+        tags: ["Go","Redis-Server", "React", "TypeScript", "Tailwind CSS"]
     },
     {
         title: "RadioGo",
         description: "Pagina web para una radio online. La página permite a los usuarios escuchar la transmisión en vivo, ver el horario de programas y contactar a la estación.",
-        tags: ["React", "TypeScript", "Tailwind CSS", "Next.js"]
+        tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Icecast"]
     }
 ];
