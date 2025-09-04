@@ -20,10 +20,10 @@ export default function ProjectsPage() {
                         className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.5 }}
+                        transition={{ duration: 0.3, delay: index * 0.3 }}
                     >
                         <h2 className="text-2xl font-semibold">{project.title}</h2>
-                        <p className="mt-2 text-gray-600">{project.description}</p>
+                        <p className="mt-2 text-white-600">{project.description}</p>
                         <div className="mt-4 flex flex-wrap gap-2">
                             {project.tags.map((tag, tagIndex) => (
                                 <span key={tagIndex} className="bg-gray-200 text-sm text-black font-medium px-2 py-1 rounded-full">
