@@ -1,11 +1,18 @@
 @import "tailwindcss";
-@import "tailwindcss/preflight"; 
-@import "tailwindcss/utilities";
 
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 15, 23, 42;
   --background-end-rgb: 88, 28, 135;
+}
+
+/* MODO OSCURO (cuando exista class="dark") - "Verde Oscuro"
+   Esto se activará con el botón.
+*/
+.dark:root {
+  --foreground-rgb: 229, 231, 235;     /* Texto gris claro */
+  --background-start-rgb: 20, 83, 45;  /* Fondo verde oscuro */
+  --background-end-rgb: 22, 163, 74;   /* Gradiente a verde más brillante */
 }
 
 @theme inline {
@@ -15,12 +22,14 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+  */
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -30,6 +39,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Animación para las partículas de fondo */
@@ -62,50 +72,4 @@ html {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-
-/* Tema Oscuro (Púrpura) - Por defecto */
-.dark body {
-  @apply bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 text-white;
-}
-
-/* TEMA CLARO (VERDE) */
-/* Aplicamos los estilos cuando la clase 'light' está en el html */
-.light body {
-  @apply bg-linear-to-br from-gray-800 via-emerald-900 to-gray-800 text-white;
-}
-
-.light .text-purple-200 {
-  @apply text-emerald-200;
-}
-.light .text-purple-300 {
-  @apply text-emerald-300;
-}
-.light .text-purple-400 {
-  @apply text-emerald-400;
-}
-.light .bg-purple-600 {
-  @apply bg-emerald-600;
-}
-.light .hover\:bg-purple-700:hover {
-  @apply bg-emerald-700;
-}
-.light .border-purple-400 {
-  @apply border-emerald-400;
-}
-.light .hover\:bg-purple-800\/30:hover {
-  @apply bg-emerald-800/30;
-}
-.light .bg-clip-text.bg-gradient-to-r.from-purple-400.to-pink-600 {
-  @apply from-emerald-400 to-green-400;
-}
-.light .bg-purple-500 {
-  @apply bg-emerald-500;
-}
-.light .bg-purple-900\/70 {
-    @apply bg-emerald-900/70;
-}
-.light .hover\:border-purple-500:hover {
-    @apply border-emerald-500;
 }

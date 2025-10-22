@@ -2,28 +2,40 @@
 
 import { useState, useEffect } from 'react';
 
-type Theme = 'dark' | 'light';
+type Theme = 'light' | 'dark';
 
-export const useTheme = (): [Theme, () => void] => {
-  const [theme, setTheme] = useState<Theme>('dark');
+
+export function useTheme(): [Theme, () => void] {
+  
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme') as Theme | null;
-    if (localTheme) {
-      setTheme(localTheme);
-      document.documentElement.classList.add(localTheme);
-    } else {
+    const localTheme = localStorage.getItem('theme') as Theme | null;
+    const initialTheme = localTheme || 'light';
+
+
+    setTheme(initialTheme);
+    
+    if (initialTheme === 'dark') {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    window.localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
+    setTheme(prevTheme => {
+      const newTheme = prevTheme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+      
+      if (newTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      return newTheme;
+    });
   };
 
   return [theme, toggleTheme];
-};
+}

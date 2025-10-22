@@ -1,10 +1,12 @@
 "use client";
 
 import { Sun, Moon } from 'lucide-react';
-import { useTheme } from '../app/hooks/useTheme';
+// Importa el hook CON LLAVES {} desde el otro archivo
+import { useTheme } from '../app/hooks/useTheme'; 
 
+// EXPORT DEFAULT AQUÍ
 export default function ThemeToggle() {
-  const [theme, toggleTheme] = useTheme();
+  const [theme, toggleTheme] = useTheme(); // Usa el hook
 
   return (
     <button

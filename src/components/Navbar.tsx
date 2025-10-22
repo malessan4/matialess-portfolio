@@ -1,4 +1,3 @@
-// app/components/Navbar.tsx
 "use client";
 
 import Link from "next/link";
@@ -28,25 +27,49 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-              Matias Daniel Alessandrello
+            {/* MODIFICADO: Añadido un gradiente 'dark:' para el tema verde */}
+            <Link
+              href="/"
+              className="text-2xl font-bold bg-clip-text text-transparent 
+                         bg-gradient-to-r from-purple-400 to-pink-600 
+                         dark:from-green-400 dark:to-emerald-500"
+            >
+              Matias Alessandrello
             </Link>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/projects" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
+              <Link
+                href="/projects"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
                 Proyectos
               </Link>
-              <Link href="/#about" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
+              <Link
+                href="/#about"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
                 Sobre Mí
               </Link>
-              <Link href="/#technologies" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
+              <Link
+                href="/#technologies"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
                 Tecnologías
               </Link>
-              <Link href="/certificados" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
+              <Link
+                href="/certificados"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
                 Certificados
               </Link>
-              <Link href="/contact" className="bg-purple-600 text-white hover:bg-purple-700 px-4 py-2 rounded-md text-sm font-medium transition-colors">
+              {/* MODIFICADO: Añadidas clases 'dark:' para el botón */}
+              <Link
+                href="/contact"
+                className="bg-purple-600 text-white hover:bg-purple-700 
+                           dark:bg-green-600 dark:hover:bg-green-700 
+                           px-4 py-2 rounded-md text-sm font-medium transition-colors"
+              >
                 Contacto
               </Link>
               <ThemeToggle />
