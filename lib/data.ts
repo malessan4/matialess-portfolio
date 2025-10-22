@@ -17,3 +17,25 @@ export const projectsData: Project[] = [
         tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Icecast"]
     }
 ];
+
+export const certificatesData = [
+  {
+    title: "React - La Guía Completa",
+    issuer: "Udemy",
+    date: "2023",
+    fileUrl: "/certificates/react-completo.pdf", // Ruta desde la carpeta public
+  },
+  {
+    title: "Node.js, Express, MongoDB & More",
+    issuer: "Udemy",
+    date: "2023",
+    fileUrl: "/certificates/node-express-mongo.pdf",
+  },
+  {
+    title: "TypeScript: The Complete Developer's Guide",
+    issuer: "Udemy",
+    date: "2024",
+    fileUrl: "/certificates/typescript-completo.pdf",
+  },
+  // ... Agrega más certificados aquí
+] as const;
