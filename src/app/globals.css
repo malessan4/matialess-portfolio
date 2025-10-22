@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight"; 
+@import "tailwindcss/utilities";
 
 :root {
   --foreground-rgb: 255, 255, 255;
@@ -60,4 +62,50 @@ html {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* Tema Oscuro (Púrpura) - Por defecto */
+.dark body {
+  @apply bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 text-white;
+}
+
+/* TEMA CLARO (VERDE) */
+/* Aplicamos los estilos cuando la clase 'light' está en el html */
+.light body {
+  @apply bg-linear-to-br from-gray-800 via-emerald-900 to-gray-800 text-white;
+}
+
+.light .text-purple-200 {
+  @apply text-emerald-200;
+}
+.light .text-purple-300 {
+  @apply text-emerald-300;
+}
+.light .text-purple-400 {
+  @apply text-emerald-400;
+}
+.light .bg-purple-600 {
+  @apply bg-emerald-600;
+}
+.light .hover\:bg-purple-700:hover {
+  @apply bg-emerald-700;
+}
+.light .border-purple-400 {
+  @apply border-emerald-400;
+}
+.light .hover\:bg-purple-800\/30:hover {
+  @apply bg-emerald-800/30;
+}
+.light .bg-clip-text.bg-gradient-to-r.from-purple-400.to-pink-600 {
+  @apply from-emerald-400 to-green-400;
+}
+.light .bg-purple-500 {
+  @apply bg-emerald-500;
+}
+.light .bg-purple-900\/70 {
+    @apply bg-emerald-900/70;
+}
+.light .hover\:border-purple-500:hover {
+    @apply border-emerald-500;
 }
