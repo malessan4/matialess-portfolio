@@ -1,18 +1,23 @@
 @import "tailwindcss";
 
+/* Tema por defecto (Claro - Morado/Rosa) */
 :root {
   --foreground-rgb: 255, 255, 255;
+  /* Texto blanco para el tema por defecto */
   --background-start-rgb: 15, 23, 42;
+  /* Azul oscuro casi negro */
   --background-end-rgb: 88, 28, 135;
+  /* Morado oscuro */
 }
 
-/* MODO OSCURO (cuando exista class="dark") - "Verde Oscuro"
-   Esto se activará con el botón.
-*/
+/* Tema Oscuro (Verde) */
 .dark:root {
-  --foreground-rgb: 229, 231, 235;     /* Texto gris claro */
-  --background-start-rgb: 20, 83, 45;  /* Fondo verde oscuro */
-  --background-end-rgb: 22, 163, 74;   /* Gradiente a verde más brillante */
+  --foreground-rgb: 229, 231, 235;
+  /* Texto gris claro para el tema oscuro */
+  --background-start-rgb: 20, 83, 45;
+  /* Fondo verde oscuro */
+  --background-end-rgb: 22, 163, 74;
+  /* Verde más brillante */
 }
 
 @theme inline {
@@ -22,36 +27,53 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/*
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-  */
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  /* El background del body usará las variables CSS que cambian con .dark:root */
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Animación para las partículas de fondo */
 @keyframes float {
   0% {
     transform: translateY(0) rotate(0deg);
+    background-color: rgba(168, 85, 247, 0.2);
+    /* purple-500 con opacidad */
     opacity: 0.2;
   }
+
   50% {
     transform: translateY(-20px) rotate(180deg);
     opacity: 0.3;
   }
+
+  100% {
+    transform: translateY(0) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+.dark .animate-float {
+  animation-name: float-dark;
+}
+
+@keyframes float-dark {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    background-color: rgba(16, 185, 129, 0.2);
+    /* emerald-500 con opacidad */
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.3;
+  }
+
   100% {
     transform: translateY(0) rotate(360deg);
     opacity: 0.2;
@@ -62,12 +84,10 @@ body {
   animation: float 10s infinite ease-in-out;
 }
 
-/* Mejoras de scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Efectos de glassmorphismo */
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
