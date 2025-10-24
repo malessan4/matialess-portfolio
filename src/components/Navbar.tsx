@@ -4,9 +4,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import { useTheme } from 'next-themes';
+
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,8 +22,16 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-slate-900/80 backdrop-blur-md shadow-lg dark:bg-emerald-950/80" : "bg-transparent"
-        }`} // AÑADIDO: Fondo de Navbar en dark mode
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1500
+    ${scrolled
+          ? // Si SÍ ha hecho scroll...
+          theme === 'light'
+            ? 'bg-slate-700/70 backdrop-blur-md shadow-lg' // Scrolled + Modo Light
+            : 'bg-emerald-950/70 backdrop-blur-md shadow-lg' // Scrolled + Modo Dark
+          : // Si NO ha hecho scroll...
+          'bg-transparent' // Sin scroll (en ambos modos)
+        }
+  `}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -29,53 +41,79 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link
               href="/"
-              className="text-2xl font-bold bg-clip-text text-transparent
-                         bg-gradient-to-r from-purple-400 to-pink-600
-                         dark:from-green-400 dark:to-emerald-500"
+              className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r
+              transition-colors duration-1500 ease-in-out
+                       ${theme === 'light'
+                  ? 'from-purple-500 to-pink-700'
+                  : 'from-green-200 to-green-800'}`}
             >
               Matias Alessandrello
             </Link>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {/* Ajustar los colores de los enlaces para que cambien con el tema */}
               <Link
                 href="/projects"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
-                           dark:text-gray-200 dark:hover:text-white"
+                className={`
+        ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
+        ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+        hover:text-white px-3 py-2 rounded-md text-sm font-medium
+        transition-all duration-200 ease-in-out hover:scale-105 inline-block
+      `}
               >
                 Proyectos
               </Link>
+
               <Link
                 href="/#about"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
-                           dark:text-gray-200 dark:hover:text-white"
+                className={`
+        ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
+        ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+        hover:text-white px-3 py-2 rounded-md text-sm font-medium
+        transition-all duration-200 ease-in-out hover:scale-105 inline-block
+      `}
               >
                 Sobre Mí
               </Link>
+
               <Link
                 href="/#technologies"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
-                           dark:text-gray-200 dark:hover:text-white"
+                className={`
+        ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
+        ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+        hover:text-white px-3 py-2 rounded-md text-sm font-medium
+        transition-all duration-200 ease-in-out hover:scale-105 inline-block
+      `}
               >
                 Tecnologías
               </Link>
+
               <Link
                 href="/certificados"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
-                           dark:text-gray-200 dark:hover:text-white"
+                className={`
+        ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
+        ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+        hover:text-white px-3 py-2 rounded-md text-sm font-medium
+        transition-all duration-200 ease-in-out hover:scale-105 inline-block
+      `}
               >
                 Certificados
               </Link>
+
               <Link
                 href="/contact"
-                className="bg-purple-600 text-white hover:bg-purple-700
-                           dark:bg-green-600 dark:hover:bg-green-700
-                           px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                className={`
+        ${theme === 'light' ? 'bg-purple-600 hover:bg-purple-700' : 'bg-green-600 hover:bg-green-700'}
+        text-white
+        px-4 py-2 rounded-md text-sm font-medium
+        transition-all duration-1500 ease-in-out hover:scale-105 inline-block
+      `}
               >
                 Contacto
               </Link>
+
               <ThemeToggle />
+
             </div>
           </div>
           {/* Aquí se podría agregar un menú hamburguesa para móviles */}
