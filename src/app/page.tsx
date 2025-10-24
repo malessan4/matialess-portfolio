@@ -59,7 +59,7 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen text-white pt-20"> {/* ELIMINADO: bg-gradient-to-br ... */}
+    <main className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-screen px-4 py-16 overflow-hidden">
         <BackgroundParticles />
@@ -70,15 +70,14 @@ export default function Home() {
           animate="visible"
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600
-                       dark:from-green-400 dark:to-emerald-500"
-            variants={itemVariants}
+            className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-pink-600
+                       dark:from-green-400 dark:to-emerald-900"
           >
             Hola, soy Matías
           </motion.h1>
 
           <motion.h2
-            className="text-2xl md:text-3xl font-semibold mb-8 text-purple-200 dark:text-green-200"
+            className="text-2xl md:text-3xl font-semibold mb-8 text-purple-700 dark:text-green-200"
             variants={itemVariants}
           >
             Desarrollador Full Stack
@@ -132,7 +131,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section id="technologies" className="py-20 px-4 bg-slate-800/50 dark:bg-emerald-900/50">
+      {/* Sección de tecnologías */}
+      <section id="technologies" className="py-20 px-4 bg-white/30 dark:bg-emerald-900/50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Tecnologías</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
@@ -146,8 +146,8 @@ export default function Home() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-slate-700/50 p-4 rounded-lg text-center backdrop-blur-sm hover:bg-slate-700/70 transition-colors duration-300
-                           dark:bg-emerald-700/50 dark:hover:bg-emerald-700/70"
+                className="bg-white/50 p-4 rounded-lg text-center backdrop-blur-sm hover:bg-white/70 transition-colors duration-300
+                           dark:bg-emerald-700/50 dark:hover:bg-emerald-900/70"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -165,7 +165,7 @@ export default function Home() {
       <section id="about" className="py-20 px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
-            className="bg-slate-800/30 p-8 rounded-2xl backdrop-blur-sm border border-slate-700/30 flex flex-col lg:flex-row items-center gap-8 lg:gap-12
+            className="bg-white/30 p-8 rounded-2xl backdrop-blur-sm border border-purple-200/30 flex flex-col lg:flex-row items-center gap-8 lg:gap-12
                        dark:bg-emerald-900/30 dark:border-emerald-700/30"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -177,13 +177,13 @@ export default function Home() {
               <p className="text-lg mb-4 leading-relaxed">
                 Soy un desarrollador apasionado por crear soluciones tecnológicas que impacten positivamente. Disfruto enfrentando nuevos desafíos y aprendiendo constantemente.
               </p>
-              <p className="text-lg mb-4 leading-relaxed text-purple-200 dark:text-green-200">
-                Actualmente estoy cursando la <span className="font-bold text-purple-400 dark:text-green-400">Tecnicatura en Programación</span> en la Universidad Nacional Guillermo Brown, donde llevo completado el {currentCareerProgress}% de la carrera.
+              <p className="text-lg mb-4 leading-relaxed text-purple-800 dark:text-green-200">
+                Actualmente estoy cursando la <span className="font-bold text-purple-400">Tecnicatura en Programación</span> en la Universidad Nacional Guillermo Brown, donde llevo completado el {currentCareerProgress}% de la carrera.
               </p>
-              <p className="text-lg mb-4 leading-relaxed text-purple-200 dark:text-green-200">
-                Finalicé la <span className="font-bold text-purple-400 dark:text-green-400">Licenciatura en Composición con Medios Electroacústicos</span>, en la Universidad Nacional de Quilmes, esta carrera fue mi acercamiento y mi actual pasión por la computación y programación.
+              <p className="text-lg mb-4 leading-relaxed text-purple-800 dark:text-green-200">
+                Finalicé la<span className="font-bold text-purple-600 dark:text-green-400">Licenciatura en Composición con Medios Electroacústicos</span>, en la Universidad Nacional de Quilmes, esta carrera fue mi acercamiento y mi actual pasión por la computación y programación.
               </p>
-              <p className="text-lg mb-4 leading-relaxed text-purple-200 dark:text-green-200">
+              <p className="text-lg mb-4 leading-relaxed text-purple-800 dark:text-green-200">
                 Cuando no estoy programando, me gusta componer música y explorar nuevas tecnologías emergentes.
               </p>
             </div>
@@ -194,8 +194,8 @@ export default function Home() {
                   percentage={currentCareerProgress}
                   size={160}
                   strokeWidth={14}
-                  primaryColor={theme === 'light' ? '#a855f7' : '#10b981'} // purple-500 o emerald-500
-                  secondaryColor={theme === 'light' ? '#3f3f46' : '#4b5563'} // slate-700 o gray-600
+                  primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
+                  secondaryColor={theme === 'light' ? '#e9d5ff' : '#4b5563'} // Fondo claro (purple-100)
                 />
                 <p className="text-sm font-semibold text-center max-w-[150px]">Tecnicatura en Programación</p>
               </div>
@@ -205,7 +205,7 @@ export default function Home() {
                   size={160}
                   strokeWidth={14}
                   primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
-                  secondaryColor={theme === 'light' ? '#3f3f46' : '#4b5563'}
+                  secondaryColor={theme === 'light' ? '#e9d5ff' : '#4b5563'} // Fondo claro
                 />
                 <p className="text-sm font-semibold text-center max-w-[150px]">Lic. en Composición Electroacústica</p>
               </div>
@@ -214,16 +214,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="certificates-preview" className="py-20 px-4 bg-slate-800/50 dark:bg-emerald-900/50">
+      {/* Sección de Certificados */}
+      <section id="certificates-preview" className="py-20 px-4 bg-white/30 dark:bg-emerald-900/50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Formación Destacada</h2>
-          <p className="text-center text-purple-200 mb-12 dark:text-green-200">Estos son algunos de los cursos y certificaciones que he completado.</p>
+
+          <p className="text-center text-purple-700 mb-12 dark:text-green-200">Estos son algunos de los cursos y certificaciones que he completado.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {certificatesData.slice(0, 3).map((cert, index) => (
               <motion.div
                 key={index}
-                className="bg-slate-700/50 p-6 rounded-lg backdrop-blur-sm border border-transparent hover:border-purple-500 transition-colors duration-300
+                // ERROR ARREGLADO: 'bg-slate-700/50' cambiado a 'bg-white/50'
+                className="bg-white/50 p-6 rounded-lg backdrop-blur-sm border border-transparent hover:border-purple-500 transition-colors duration-300
                            dark:bg-emerald-700/50 dark:hover:border-green-500"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -232,7 +235,7 @@ export default function Home() {
               >
                 <FileText className="w-8 h-8 text-purple-400 mb-3 dark:text-green-400" />
                 <h3 className="font-bold text-lg">{cert.title}</h3>
-                <p className="text-sm text-slate-400">{cert.issuer}</p>
+                <p className="text-sm text-gray-600 dark:text-slate-400">{cert.issuer}</p>
               </motion.div>
             ))}
           </div>

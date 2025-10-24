@@ -2,23 +2,24 @@
 
 /* Tema por defecto (Claro - Morado/Rosa) */
 :root {
-  --foreground-rgb: 255, 255, 255;
-  /* Texto blanco para el tema por defecto */
-  --background-start-rgb: 15, 23, 42;
-  /* Azul oscuro casi negro */
-  --background-end-rgb: 88, 28, 135;
-  /* Morado oscuro */
+  --foreground-rgb: 41, 37, 36; /* Texto oscuro (ej. stone-800) */
+  --background-start-rgb: 250, 245, 255; /* Violeta muy claro (ej. purple-50) */
+  --background-end-rgb: 253, 230, 239; /* Rosa muy claro (ej. pink-100) */
 }
 
-/* Tema Oscuro (Verde) */
+/* MODO OSCURO (cuando exista class="dark") - "Verde Oscuro"
+   Esto se activará con el botón.
+*/
+
 .dark:root {
   --foreground-rgb: 229, 231, 235;
-  /* Texto gris claro para el tema oscuro */
+  /* Texto gris claro */
   --background-start-rgb: 20, 83, 45;
   /* Fondo verde oscuro */
   --background-end-rgb: 22, 163, 74;
   /* Verde más brillante */
 }
+
 
 @theme inline {
   --color-background: var(--background);
@@ -30,13 +31,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* El background del body usará las variables CSS que cambian con .dark:root */
+  /* El color de texto ahora cambiará según el tema */
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
 /* Animación para las partículas de fondo */
 @keyframes float {
   0% {
@@ -89,6 +89,7 @@ html {
 }
 
 .glass-effect {
+  /* Ajustamos el glass-effect para el modo claro */
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
