@@ -6,7 +6,8 @@ import Link from "next/link";
 import DonutChart from "../components/DonutChart";
 import { certificatesData } from "../../lib/data";
 import { FileText } from "lucide-react";
-import { useTheme } from "../app/hooks/useTheme";
+import { useTheme } from 'next-themes';
+import { useState, useEffect } from 'react';
 
 const completedDegreeProgress = 100;
 
@@ -30,8 +31,16 @@ const BackgroundParticles = () => (
 );
 
 export default function Home() {
-  const [theme] = useTheme();
+  const { theme } = useTheme();
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   // Animaciones
   const containerVariants = {
@@ -59,7 +68,14 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen pt-20">
+    <main
+      className={`min-h-screen pt-20 bg-gradient-to-r 
+                 transition-colors duration-1500 ease-in-out
+                 ${theme === 'light'
+          ? 'from-pink-900 to-purple-950'
+          : 'from-gray-900 to-green-900'
+        }`}
+    >
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-screen px-4 py-16 overflow-hidden">
         <BackgroundParticles />
@@ -70,14 +86,20 @@ export default function Home() {
           animate="visible"
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-pink-600
-                       dark:from-green-400 dark:to-emerald-900"
+            className={`text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r 
+              transition-colors duration-1500 ease-in-out
+                       ${theme === 'light' ? 'from-purple-400 to-pink-600' : 'from-green-800 to-green-200'}`}
+            variants={itemVariants}
           >
             Hola, soy Matías
           </motion.h1>
 
           <motion.h2
-            className="text-2xl md:text-3xl font-semibold mb-8 text-purple-700 dark:text-green-200"
+            className={`text-2xl md:text-3xl font-semibold mb-8 bg-clip-text text-transparent bg-gradient-to-r
+              transition-colors duration-1500 ease-in-out
+                       ${theme === 'light'
+                ? 'from-purple-500 to-pink-700'
+                : 'from-green-200 to-green-800'}`}
             variants={itemVariants}
           >
             Desarrollador Full Stack
@@ -97,15 +119,23 @@ export default function Home() {
           >
             <Link
               href="/projects"
-              className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors duration-300 transform hover:scale-105
-                         dark:bg-green-600 dark:hover:bg-green-700"
+              className={`px-8 py-3 rounded-lg font-medium transform hover:scale-105 
+                         transition-colors duration-1500
+                         ${theme === 'light'
+                  ? 'bg-purple-600 hover:bg-purple-700 text-white'
+                  : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
             >
               Ver Proyectos
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-3 border border-purple-400 text-purple-200 hover:bg-purple-800/30 rounded-lg font-medium transition-colors duration-300
-                         dark:border-green-400 dark:text-green-200 dark:hover:bg-green-800/30"
+              className={`px-8 py-3 border rounded-lg font-medium 
+                         transition-colors duration-1500
+                         ${theme === 'light'
+                  ? 'border-purple-400 text-purple-200 hover:bg-purple-800/30'
+                  : 'border-green-400 text-green-200 hover:bg-green-800/30'
+                }`}
             >
               Contactarme
             </Link>
@@ -119,7 +149,8 @@ export default function Home() {
           transition={{ delay: 1.5, duration: 0.5 }}
         >
           <svg
-            className="w-8 h-8 text-purple-400 dark:text-green-400"
+            className={`w-8 h-8 transition-colors duration-150 ease-in-out 
+                       ${theme === 'light' ? 'text-purple-500' : 'text-green-300'}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -132,7 +163,16 @@ export default function Home() {
       </section>
 
       {/* Sección de tecnologías */}
-      <section id="technologies" className="py-20 px-4 bg-white/30 dark:bg-emerald-900/50">
+      <section
+        id="technologies"
+        className={`py-20 px-4 transition-colors duration-1500 ease-in-out
+                   ${theme === 'light'
+            // Contraste claro (vidrio) sobre fondo oscuro
+            ? 'bg-white/10'
+            // Contraste oscuro (vidrio) sobre fondo oscuro
+            : 'bg-emerald-900/30'
+          }`}
+      >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Tecnologías</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
@@ -146,8 +186,14 @@ export default function Home() {
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                className="bg-white/50 p-4 rounded-lg text-center backdrop-blur-sm hover:bg-white/70 transition-colors duration-300
-                           dark:bg-emerald-700/50 dark:hover:bg-emerald-900/70"
+                className={`p-4 rounded-lg text-center backdrop-blur-sm 
+                           transition-colors duration-1500 ease-in-out
+                           ${theme === 'light'
+                    // Vidrio más claro
+                    ? 'bg-white/20 hover:bg-white/30'
+                    // Vidrio verde
+                    : 'bg-emerald-700/50 hover:bg-emerald-900/70'
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -165,8 +211,12 @@ export default function Home() {
       <section id="about" className="py-20 px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
-            className="bg-white/30 p-8 rounded-2xl backdrop-blur-sm border border-purple-200/30 flex flex-col lg:flex-row items-center gap-8 lg:gap-12
-                       dark:bg-emerald-900/30 dark:border-emerald-700/30"
+            className={`p-8 rounded-2xl backdrop-blur-sm border flex flex-col lg:flex-row items-center gap-8 lg:gap-12
+                       transition-colors duration-1500 ease-in-out
+                       ${theme === 'light'
+                ? 'bg-white/10 border-purple-200/30'
+                : 'bg-emerald-900/30 border-emerald-700/30'
+              }`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -177,25 +227,25 @@ export default function Home() {
               <p className="text-lg mb-4 leading-relaxed">
                 Soy un desarrollador apasionado por crear soluciones tecnológicas que impacten positivamente. Disfruto enfrentando nuevos desafíos y aprendiendo constantemente.
               </p>
-              <p className="text-lg mb-4 leading-relaxed text-purple-800 dark:text-green-200">
-                Actualmente estoy cursando la <span className="font-bold text-purple-400">Tecnicatura en Programación</span> en la Universidad Nacional Guillermo Brown, donde llevo completado el {currentCareerProgress}% de la carrera.
+              <p className="text-lg mb-4 leading-relaxed" >
+                Actualmente estoy cursando la <span className="font-bold text">Tecnicatura en Programación</span> en la Universidad Nacional Guillermo Brown, donde llevo completado el {currentCareerProgress}% de la carrera.
               </p>
-              <p className="text-lg mb-4 leading-relaxed text-purple-800 dark:text-green-200">
-                Finalicé la<span className="font-bold text-purple-600 dark:text-green-400">Licenciatura en Composición con Medios Electroacústicos</span>, en la Universidad Nacional de Quilmes, esta carrera fue mi acercamiento y mi actual pasión por la computación y programación.
+              <p className="text-lg mb-4 leading-relaxed">
+                Finalicé la<span className="font-bold"> Licenciatura en Composición con Medios Electroacústicos</span>, en la Universidad Nacional de Quilmes, esta carrera fue mi acercamiento y mi actual pasión por la computación y programación.
               </p>
-              <p className="text-lg mb-4 leading-relaxed text-purple-800 dark:text-green-200">
+              <p className="text-lg mb-4 leading-relaxed">
                 Cuando no estoy programando, me gusta componer música y explorar nuevas tecnologías emergentes.
               </p>
             </div>
             <div className="lg:w-1/2 flex flex-col sm:flex-row justify-center items-center gap-8 mt-6 lg:mt-0">
-              {/* Ajustar DonutChart para que use el tema */}
+
               <div className="flex flex-col items-center gap-2">
                 <DonutChart
                   percentage={currentCareerProgress}
                   size={160}
                   strokeWidth={14}
                   primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
-                  secondaryColor={theme === 'light' ? '#e9d5ff' : '#4b5563'} // Fondo claro (purple-100)
+                  secondaryColor={theme === 'light' ? '#5c595fff' : '#4b5563'}
                 />
                 <p className="text-sm font-semibold text-center max-w-[150px]">Tecnicatura en Programación</p>
               </div>
@@ -205,7 +255,7 @@ export default function Home() {
                   size={160}
                   strokeWidth={14}
                   primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
-                  secondaryColor={theme === 'light' ? '#e9d5ff' : '#4b5563'} // Fondo claro
+                  secondaryColor={theme === 'light' ? '#5c595fff' : '#4b5563'}
                 />
                 <p className="text-sm font-semibold text-center max-w-[150px]">Lic. en Composición Electroacústica</p>
               </div>
@@ -215,7 +265,11 @@ export default function Home() {
       </section>
 
       {/* Sección de Certificados */}
-      <section id="certificates-preview" className="py-20 px-4 bg-white/30 dark:bg-emerald-900/50">
+      <section
+        id="certificates-preview"
+        className={`py-20 px-4 transition-colors duration-1500 ease-in-out
+                   ${theme === 'light' ? 'bg-white/10' : 'bg-emerald-900/50'}`}
+      >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Formación Destacada</h2>
 
@@ -225,17 +279,22 @@ export default function Home() {
             {certificatesData.slice(0, 3).map((cert, index) => (
               <motion.div
                 key={index}
-                // ERROR ARREGLADO: 'bg-slate-700/50' cambiado a 'bg-white/50'
-                className="bg-white/50 p-6 rounded-lg backdrop-blur-sm border border-transparent hover:border-purple-500 transition-colors duration-300
-                           dark:bg-emerald-700/50 dark:hover:border-green-500"
+                className={`p-6 rounded-lg backdrop-blur-sm border 
+                           transition-colors duration-1500
+                           ${theme === 'light'
+                    ? 'bg-white/20 border-transparent hover:border-purple-500'
+                    : 'bg-emerald-700/50 border-transparent hover:border-green-500'
+                  }`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <FileText className="w-8 h-8 text-purple-400 mb-3 dark:text-green-400" />
+                <FileText className={`w-8 h-8 mb-3 transition-colors duration-150 ease-in-out
+                                    ${theme === 'light' ? 'text-purple-400' : 'text-green-400'}`} />
                 <h3 className="font-bold text-lg">{cert.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-slate-400">{cert.issuer}</p>
+                <p className={`text-sm transition-colors duration-150 ease-in-out
+                               ${theme === 'light' ? 'text-gray-300' : 'text-slate-400'}`}>{cert.issuer}</p>
               </motion.div>
             ))}
           </div>
@@ -249,8 +308,12 @@ export default function Home() {
           >
             <Link
               href="/certificados"
-              className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors duration-300 transform hover:scale-105 inline-block
-                         dark:bg-green-600 dark:hover:bg-green-700"
+              className={`px-8 py-3 rounded-lg font-medium transform hover:scale-105 inline-block
+                         transition-colors duration-1500
+                         ${theme === 'light'
+                  ? 'bg-purple-600 hover:bg-purple-700 text-white'
+                  : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
             >
               Ver Todos los Certificados
             </Link>

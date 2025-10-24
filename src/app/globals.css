@@ -2,9 +2,9 @@
 
 /* Tema por defecto (Claro - Morado/Rosa) */
 :root {
-  --foreground-rgb: 41, 37, 36; /* Texto oscuro (ej. stone-800) */
-  --background-start-rgb: 250, 245, 255; /* Violeta muy claro (ej. purple-50) */
-  --background-end-rgb: 253, 230, 239; /* Rosa muy claro (ej. pink-100) */
+  --foreground-rgb: 229, 231, 235;
+  --background-start-rgb: 200, 23, 42;
+  --background-end-rgb: 88, 28, 135;
 }
 
 /* MODO OSCURO (cuando exista class="dark") - "Verde Oscuro"
@@ -13,11 +13,9 @@
 
 .dark:root {
   --foreground-rgb: 229, 231, 235;
-  /* Texto gris claro */
-  --background-start-rgb: 20, 83, 45;
-  /* Fondo verde oscuro */
+  --background-start-rgb: 23, 28, 40;
   --background-end-rgb: 22, 163, 74;
-  /* Verde más brillante */
+
 }
 
 
@@ -31,17 +29,19 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* El color de texto ahora cambiará según el tema */
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  background: linear-gradient(to right,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb)));
+
+  transition: color 0.5s ease-in-out;
 }
+
 /* Animación para las partículas de fondo */
 @keyframes float {
   0% {
     transform: translateY(0) rotate(0deg);
-    background-color: rgba(168, 85, 247, 0.2);
+    background-color: rgb(0, 0, 0);
     /* purple-500 con opacidad */
     opacity: 0.2;
   }
@@ -64,7 +64,7 @@ body {
 @keyframes float-dark {
   0% {
     transform: translateY(0) rotate(0deg);
-    background-color: rgba(16, 185, 129, 0.2);
+    background-color: rgb(0, 0, 0);
     /* emerald-500 con opacidad */
     opacity: 0.2;
   }
