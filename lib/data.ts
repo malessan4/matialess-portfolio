@@ -14,7 +14,7 @@ export const projectsData: Project[] = [
     {
         title: "RadioGo",
         description: "Pagina web para una radio online. La página permite a los usuarios escuchar la transmisión en vivo, ver el horario de programas y contactar a la estación.",
-        tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Icecast"]
+        tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "IceCast"]
     }
 ];
 
