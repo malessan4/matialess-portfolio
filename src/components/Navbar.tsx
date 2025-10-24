@@ -18,8 +18,8 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-slate-900/80 backdrop-blur-md shadow-lg" : "bg-transparent"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-slate-900/80 backdrop-blur-md shadow-lg dark:bg-emerald-950/80" : "bg-transparent"
+        }`} // AÑADIDO: Fondo de Navbar en dark mode
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -27,11 +27,10 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            {/* MODIFICADO: Añadido un gradiente 'dark:' para el tema verde */}
             <Link
               href="/"
-              className="text-2xl font-bold bg-clip-text text-transparent 
-                         bg-gradient-to-r from-purple-400 to-pink-600 
+              className="text-2xl font-bold bg-clip-text text-transparent
+                         bg-gradient-to-r from-purple-400 to-pink-600
                          dark:from-green-400 dark:to-emerald-500"
             >
               Matias Alessandrello
@@ -39,35 +38,39 @@ export default function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
+              {/* Ajustar los colores de los enlaces para que cambien con el tema */}
               <Link
                 href="/projects"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
+                           dark:text-gray-200 dark:hover:text-white"
               >
                 Proyectos
               </Link>
               <Link
                 href="/#about"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
+                           dark:text-gray-200 dark:hover:text-white"
               >
                 Sobre Mí
               </Link>
               <Link
                 href="/#technologies"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
+                           dark:text-gray-200 dark:hover:text-white"
               >
                 Tecnologías
               </Link>
               <Link
                 href="/certificados"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors
+                           dark:text-gray-200 dark:hover:text-white"
               >
                 Certificados
               </Link>
-              {/* MODIFICADO: Añadidas clases 'dark:' para el botón */}
               <Link
                 href="/contact"
-                className="bg-purple-600 text-white hover:bg-purple-700 
-                           dark:bg-green-600 dark:hover:bg-green-700 
+                className="bg-purple-600 text-white hover:bg-purple-700
+                           dark:bg-green-600 dark:hover:bg-green-700
                            px-4 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Contacto

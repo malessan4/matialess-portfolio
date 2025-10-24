@@ -6,16 +6,16 @@ import Link from "next/link";
 import DonutChart from "../components/DonutChart";
 import { certificatesData } from "../../lib/data";
 import { FileText } from "lucide-react";
+import { useTheme } from "../app/hooks/useTheme";
 
 const completedDegreeProgress = 100;
-
 
 const BackgroundParticles = () => (
   <div className="absolute inset-0 z-0">
     {[...Array(15)].map((_, i) => (
       <div
         key={i}
-        className="absolute rounded-full bg-purple-500 opacity-20 animate-float"
+        className="absolute rounded-full animate-float"
         style={{
           width: Math.random() * 50 + 10 + 'px',
           height: Math.random() * 50 + 10 + 'px',
@@ -30,6 +30,7 @@ const BackgroundParticles = () => (
 );
 
 export default function Home() {
+  const [theme] = useTheme();
 
 
   // Animaciones
@@ -53,7 +54,7 @@ export default function Home() {
   };
 
   // Define el porcentaje de progreso aquí para usarlo en el texto y el gráfico
-  const currentCareerProgress = 35;
+  const currentCareerProgress = 43;
 
 
 
@@ -62,7 +63,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-screen px-4 py-16 overflow-hidden">
         <BackgroundParticles />
-
         <motion.div
           className="relative z-10 max-w-4xl mx-auto text-center"
           variants={containerVariants}
@@ -97,20 +97,21 @@ export default function Home() {
           >
             <Link
               href="/projects"
-              className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors duration-300 transform hover:scale-105"
+              className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors duration-300 transform hover:scale-105
+                         dark:bg-green-600 dark:hover:bg-green-700"
             >
               Ver Proyectos
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-3 border border-purple-400 text-purple-200 hover:bg-purple-800/30 rounded-lg font-medium transition-colors duration-300"
+              className="px-8 py-3 border border-purple-400 text-purple-200 hover:bg-purple-800/30 rounded-lg font-medium transition-colors duration-300
+                         dark:border-green-400 dark:text-green-200 dark:hover:bg-green-800/30"
             >
               Contactarme
             </Link>
           </motion.div>
         </motion.div>
 
-        {/* Flecha de scroll */}
         <motion.div
           className="absolute bottom-10 animate-bounce"
           initial={{ opacity: 0, y: -10 }}
@@ -118,7 +119,7 @@ export default function Home() {
           transition={{ delay: 1.5, duration: 0.5 }}
         >
           <svg
-            className="w-8 h-8 text-purple-400"
+            className="w-8 h-8 text-purple-400 dark:text-green-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -142,7 +143,6 @@ export default function Home() {
               { name: "Python", icon: "🐍" }, { name: "Django", icon: "🚀" }, { name: "PyQt", icon: "🐍🖼️" }, { name: "Java", icon: "☕" },
               { name: "Docker", icon: "🐳" }, { name: "Git / Github", icon: "🔧" },
               { name: "PostgreSQL", icon: "🐘" }, { name: "GraphQL", icon: "🔺" }, { name: "GoLang", icon: "🐿️" }
-
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -162,10 +162,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sección sobre mí (actualizada con dos gráficos) */}
-
       <section id="about" className="py-20 px-4">
-        <div className="max-w-5xl mx-auto"> {/* Aumentado el ancho máximo para más espacio */}
+        <div className="max-w-5xl mx-auto">
           <motion.div
             className="bg-white/30 p-8 rounded-2xl backdrop-blur-sm border border-purple-200/30 flex flex-col lg:flex-row items-center gap-8 lg:gap-12
                        dark:bg-emerald-900/30 dark:border-emerald-700/30"
@@ -190,7 +188,7 @@ export default function Home() {
               </p>
             </div>
             <div className="lg:w-1/2 flex flex-col sm:flex-row justify-center items-center gap-8 mt-6 lg:mt-0">
-              {/* Gráfico 2: Tecnicatura en progreso */}
+              {/* Ajustar DonutChart para que use el tema */}
               <div className="flex flex-col items-center gap-2">
                 <DonutChart
                   percentage={currentCareerProgress}
@@ -201,7 +199,6 @@ export default function Home() {
                 />
                 <p className="text-sm font-semibold text-center max-w-[150px]">Tecnicatura en Programación</p>
               </div>
-              {/* Gráfico 1: Licenciatura completada */}
               <div className="flex flex-col items-center gap-2">
                 <DonutChart
                   percentage={completedDegreeProgress}
@@ -252,15 +249,14 @@ export default function Home() {
           >
             <Link
               href="/certificados"
-              className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors duration-300 transform hover:scale-105 inline-block"
+              className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors duration-300 transform hover:scale-105 inline-block
+                         dark:bg-green-600 dark:hover:bg-green-700"
             >
               Ver Todos los Certificados
             </Link>
           </motion.div>
         </div>
       </section>
-
     </main>
   );
 }
-

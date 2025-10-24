@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Tema por defecto (Claro - Morado/Rosa) */
 :root {
   --foreground-rgb: 41, 37, 36; /* Texto oscuro (ej. stone-800) */
   --background-start-rgb: 250, 245, 255; /* Violeta muy claro (ej. purple-50) */
@@ -27,14 +28,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/*
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-  */
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -91,7 +84,6 @@ body {
   animation: float 10s infinite ease-in-out;
 }
 
-/* Mejoras de scroll */
 html {
   scroll-behavior: smooth;
 }
