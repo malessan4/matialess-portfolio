@@ -119,22 +119,32 @@ export default function Home() {
           >
             <Link
               href="/projects"
-              className={`px-8 py-3 rounded-lg font-medium transform hover:scale-105 
-                         transition-colors duration-1500
-                         ${theme === 'light'
+              className={`px-8 py-3 rounded-lg font-medium transform hover:scale-110 
+             
+             /* --- ESTO ES LO NUEVO --- */
+             transition-[transform,background-color]
+             duration-[300ms,1500ms]
+             ease-in-out
+             
+             ${theme === 'light'
                   ? 'bg-purple-600 hover:bg-purple-700 text-white'
-                  : 'bg-green-600 hover:bg-green-700 text-white'
+                  : 'bg-green-600 hover:bg-green-800 text-white'
                 }`}
             >
               Ver Proyectos
             </Link>
             <Link
               href="/contact"
-              className={`px-8 py-3 border rounded-lg font-medium 
-                         transition-colors duration-1500
-                         ${theme === 'light'
+              className={`px-8 py-3 border rounded-lg font-medium transform hover:scale-110 
+             
+             /* --- ESTO ES LO NUEVO --- */
+             transition-[transform,background-color,border-color]
+             duration-[500ms,300ms,1300ms]
+             ease-in-out
+             
+             ${theme === 'light'
                   ? 'border-purple-400 text-purple-200 hover:bg-purple-800/30'
-                  : 'border-green-400 text-green-200 hover:bg-green-800/30'
+                  : 'border-green-400 text-green-200 hover:bg-green-600/70'
                 }`}
             >
               Contactarme
