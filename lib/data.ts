@@ -41,22 +41,22 @@ export const projectsData: Project[] = [
 
 export const certificatesData = [
   {
-    title: "React - La Guía Completa",
-    issuer: "Udemy",
-    date: "2023",
-    fileUrl: "/certificates/react-completo.pdf", // Ruta desde la carpeta public
-  },
-  {
-    title: "Node.js, Express, MongoDB & More",
-    issuer: "Udemy",
-    date: "2023",
-    fileUrl: "/certificates/node-express-mongo.pdf",
-  },
-  {
-    title: "TypeScript: The Complete Developer's Guide",
-    issuer: "Udemy",
+    title: "Javascript / Node.js",
+    issuer: "Codo a Codo 4.0",
     date: "2024",
-    fileUrl: "/certificates/typescript-completo.pdf",
+    fileUrl: "/certificates/node.js.pdf", 
+  },
+  {
+    title: "Fullstack Java",
+    issuer: "Codo a Codo 4.0",
+    date: "2023-2024",
+    fileUrl: "/certificates/java.pdf",
+  },
+  {
+    title: "Base de Datos SQL",
+    issuer: "Universidad Nacional Guillermo Brown",
+    date: "2024",
+    fileUrl: "/certificates/SQL.pdf",
   },
   // ... Agrega más certificados aquí
 ] as const;

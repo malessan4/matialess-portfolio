@@ -121,7 +121,6 @@ export default function Home() {
               href="/projects"
               className={`px-8 py-3 rounded-lg font-medium transform hover:scale-110 
              
-             /* --- ESTO ES LO NUEVO --- */
              transition-[transform,background-color]
              duration-[300ms,1500ms]
              ease-in-out
@@ -137,7 +136,7 @@ export default function Home() {
               href="/contact"
               className={`px-8 py-3 border rounded-lg font-medium transform hover:scale-110 
              
-             /* --- ESTO ES LO NUEVO --- */
+             
              transition-[transform,background-color,border-color]
              duration-[500ms,300ms,1300ms]
              ease-in-out
