@@ -33,11 +33,11 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1500 bg-gradient-to-r
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1500
         ${scrolled
           ? theme === 'light'
-            ? 'from-purple-500 to-pink-700'
-            : 'from-green-200 to-green-800'
+            ? 'bg-slate-700/70 backdrop-blur-md shadow-lg'
+            : 'bg-emerald-950/70 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
         }
       `}
@@ -166,9 +166,10 @@ export default function Navbar() {
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
             {/* Fondo sólido para el menú desplegable */}
-            <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3
+            <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gradient-to-r
+                transition-colors duration-1500 ease-in-out
               ${theme === 'light'
-                ? 'bg-slate-700/95'
+                ? 'bg-purple-700/95'
                 : 'bg-emerald-950/95'
               }
             `}>
