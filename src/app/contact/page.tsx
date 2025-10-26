@@ -17,7 +17,7 @@ export default function ContactPage() {
         {
             icon: <Linkedin className="w-10 h-10 text-purple-400" />,
             title: 'LinkedIn',
-            content: 'matias-alessandrello',
+            content: 'matias-daniel-alessandrello',
             href: 'https://www.linkedin.com/in/matias-alessandrello', // Reemplazar con tu URL real
         },
         {
