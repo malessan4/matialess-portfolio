@@ -33,11 +33,11 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1500
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1500 bg-gradient-to-r
         ${scrolled
           ? theme === 'light'
-            ? 'bg-slate-700/70 backdrop-blur-md shadow-lg'
-            : 'bg-emerald-950/70 backdrop-blur-md shadow-lg'
+            ? 'from-purple-500 to-pink-700'
+            : 'from-green-200 to-green-800'
           : 'bg-transparent'
         }
       `}
