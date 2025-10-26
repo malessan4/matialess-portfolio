@@ -20,7 +20,6 @@ export default function CertificatesPage() {
         setMounted(true);
     }, []);
 
-    // Muestra null o un 'cargando...' hasta que el componente esté "montado" en el cliente
     if (!mounted) {
         return null;
     }
