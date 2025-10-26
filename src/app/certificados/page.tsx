@@ -44,22 +44,31 @@ export default function CertificatesPage() {
     );
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white pt-24 pb-12">
+        <main className={`min-h-screen pt-20 bg-gradient-to-br 
+                 transition-colors duration-1500 ease-in-out
+                 ${theme === 'light'
+                ? 'from-pink-900 via-purple-950 to-pink-900'
+                : 'from-gray-900 via-green-900 to-gray-900'
+            }`}
+        >
             <BackgroundParticles />
             <div className="container mx-auto px-4">
                 <motion.h1
-                    className="text-4xl md:text-5xl font-bold mb-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600"
+                    className={`"text-4xl md:text-5xl font-bold mb-10 text-center bg-clip-text text-transparent bg-gradient-to-r 
+                    transition-colors duration-1500 ease-in-out
+                       ${theme === 'light' ? 'from-purple-400 to-pink-600' : 'from-green-800 to-green-200'}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                >
+                    `}>
                     Certificados y Formación
                 </motion.h1>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {certificatesData.map((cert, index) => (
                         <motion.div
                             key={index}
-                            className={`p-6 rounded-lg backdrop-blur-sm border 
+                            className={`p-6 rounded-lg backdrop-blur-sm border transition-colors duration-1500
                                 ease-in-out
                            ${theme === 'light'
                                     ? 'bg-pink-400/20 border-transparent hover:border-purple-500'
@@ -101,9 +110,11 @@ export default function CertificatesPage() {
                                     href={cert.fileUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`inline-flex items-center justify-center w-full px-4 py-2 bg-purple-600
-                                         hover:bg-purple-700 rounded-lg font-medium transition-colors duration-300 transform hover:scale-110"
-                                `}>
+                                    className={`items-center justify-center w-full px-4 py-2 transform hover:scale-105 inline-block
+                         transition-colors duration-1500
+                         ${theme === 'light'
+                                            ? 'bg-purple-600 hover:bg-purple-700 text-white'
+                                            : 'bg-green-600 hover:bg-green-700 text-white'}`}>
                                     Ver Certificado
                                     <Download className="w-4 h-4 ml-2" />
                                 </Link>

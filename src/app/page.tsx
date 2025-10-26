@@ -69,11 +69,11 @@ export default function Home() {
 
   return (
     <main
-      className={`min-h-screen pt-20 bg-gradient-to-r 
+      className={`min-h-screen pt-20 bg-gradient-to-br 
                  transition-colors duration-1500 ease-in-out
                  ${theme === 'light'
-          ? 'from-pink-900 to-purple-950'
-          : 'from-gray-900 to-green-900'
+          ? 'from-pink-900 via-purple-950 to-pink-900'
+          : 'from-gray-900 via-green-900 to-gray-900'
         }`}
     >
       {/* Hero Section */}
@@ -119,10 +119,26 @@ export default function Home() {
           >
             <Link
               href="/projects"
-              className={`px-8 py-3 rounded-lg font-medium transform hover:scale-110 
+              className={`px-8 py-3 border rounded-lg font-medium transform hover:scale-110 
              
-             transition-[transform,background-color]
-             duration-[300ms,1500ms]
+             transition-[transform,background-color,border-color]
+             duration-[1000ms,300ms,1300ms]
+             ease-in-out
+             
+             ${theme === 'light'
+                  ? 'border-purple-400 text-purple-200 hover:bg-purple-800/30'
+                  : 'border-green-400 text-green-200 hover:bg-green-600/70'
+                }`}
+            >
+              Ver Proyectos
+            </Link>
+
+            <Link
+              href="#about"
+              className={`px-8 py-3  rounded-lg font-medium transform hover:scale-120 
+             
+             transition-[transform,background-color,border-color]
+             duration-[1000ms,1500ms,1500ms]
              ease-in-out
              
              ${theme === 'light'
@@ -130,13 +146,13 @@ export default function Home() {
                   : 'bg-green-600 hover:bg-green-800 text-white'
                 }`}
             >
-              Ver Proyectos
+              Sobre Mí
             </Link>
+
             <Link
               href="/contact"
               className={`px-8 py-3 border rounded-lg font-medium transform hover:scale-110 
-             
-             
+            
              transition-[transform,background-color,border-color]
              duration-[500ms,300ms,1300ms]
              ease-in-out

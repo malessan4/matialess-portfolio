@@ -58,5 +58,17 @@ export const certificatesData = [
     date: "2024",
     fileUrl: "/certificates/SQL.pdf",
   },
+    {
+    title: "Programación con JavaScript",
+    issuer: "Fundación Telefónica Movistar",
+    date: "2023",
+    fileUrl: "/certificates/telefonica-javascript.pdf",
+  },
+    {
+    title: "Diseño Web con HTML5 y CSS",
+    issuer: "Fundación Telefónica Movistar",
+    date: "2023",
+    fileUrl: "/certificates/telefonica-web.pdf",
+  },
   // ... Agrega más certificados aquí
 ] as const;
