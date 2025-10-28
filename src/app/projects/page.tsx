@@ -104,9 +104,9 @@ export default function ProjectsPage() {
                                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                             </div>
-                            <div className="p-6 flex flex-col flex-grow">
+                            <div className="p-10 flex flex-col flex-grow">
                                 <motion.h2
-                                    className={`text-2xl md:text-4xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r 
+                                    className={`text-xl md:text-4xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r 
                     transition-colors duration-1500 ease-in-out
                        ${theme === 'light' ? 'from-purple-400 to-pink-600' : 'from-green-800 to-green-200'}`}
                                 >{project.title}</motion.h2>

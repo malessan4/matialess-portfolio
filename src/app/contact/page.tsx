@@ -3,10 +3,21 @@
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github } from 'lucide-react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { useState, useEffect } from 'react';
 
 // --- MEJORA: Página de contacto completamente rediseñada ---
 // En lugar de un formulario (que necesita un backend), proveemos formas de contacto directas y profesionales.
 export default function ContactPage() {
+    const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+    if (!mounted) {
+        return null;
+    }
+
     const contactMethods = [
         {
             icon: <Mail className="w-10 h-10 text-purple-400" />,
@@ -29,7 +40,13 @@ export default function ContactPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex items-center justify-center p-4">
+        <main className={`min-h-screen pt-20 bg-gradient-to-br flex items-center justify-center p-4
+                 transition-colors duration-1500 ease-in-out
+                 ${theme === 'light'
+                ? 'from-pink-900 via-purple-950 to-pink-900'
+                : 'from-gray-900 via-green-900 to-gray-900'
+            }`}
+        >
             <div className="container mx-auto max-w-4xl text-center">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -63,6 +80,8 @@ export default function ContactPage() {
                     ))}
                 </div>
             </div>
+
         </main>
+
     );
 }

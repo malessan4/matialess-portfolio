@@ -83,7 +83,7 @@ export default function CertificatesPage() {
                             }}
                         >
                             <div className="flex-grow">
-                                <FileText className={`w-10 h-10  transition-colors duration-1500 ease-in-out
+                                <FileText className={`w-10 h-10  transition-colors duration-300 ease-in-out
                                     ${theme === 'light' ? 'text-slate-300' : 'text-green-400'}`} />
                                 <motion.h2
                                     className={`text-2xl md:text-3xl font-semibold mb-8 bg-clip-text text-transparent bg-gradient-to-r
