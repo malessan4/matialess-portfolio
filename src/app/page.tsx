@@ -8,6 +8,7 @@ import { certificatesData } from "../../lib/data";
 import { FileText } from "lucide-react";
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const completedDegreeProgress = 100;
 
@@ -248,6 +249,33 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <div className="lg:w-1/2 text-center lg:text-left">
+              <div className="mb-6">
+                <div className={`
+    w-40 h-40 rounded-full 
+    block mx-auto lg:mx-4 
+    border-4 
+    ${theme === 'light' ? 'border-purple-400' : 'border-green-400'}
+    transition-colors duration-1500 ease-in-out
+    overflow-hidden  
+  `}>
+                <Image
+                  src="/images/matias.png"
+                  alt="Foto de perfil de Matias Alessandrello"
+                  width={160}
+                  height={160}
+                  className={`
+        w-40 h-40 rounded-full object-cover 
+        object-[50%_65%]
+        scale-115
+        -translate-x-2
+        block mx-auto lg:mx-4 
+        ${theme === 'light' ? 'border-purple-400' : 'border-green-400'}
+        transition-colors duration-1500 ease-in-out
+      `}
+                  priority // <-- Añade 'priority' si esta foto está "above the fold" (visible al cargar)
+                />
+                </div>
+              </div>
               <h2 className="text-3xl font-bold mb-6">Sobre Mí</h2>
               <p className="text-lg mb-4 leading-relaxed">
                 Soy un desarrollador apasionado por crear soluciones tecnológicas que impacten positivamente. Disfruto enfrentando nuevos desafíos y aprendiendo constantemente.
