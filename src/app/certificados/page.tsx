@@ -90,7 +90,7 @@ export default function CertificatesPage() {
                             transition-colors duration-1500 ease-in-out
                                         ${theme === 'light'
                                             ? 'from-purple-500 to-pink-700'
-                                            : 'from-green-200 to-green-800'}`}
+                                            : 'from-green-200 to-green-700'}`}
                                 >{cert.title}</motion.h2>
                                 <p className={`text-sm transition-colors duration-1500 ease-in-out
                                     ${theme === 'light'
