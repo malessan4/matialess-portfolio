@@ -25,10 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head></head>
+    <html lang="en" suppressHydrationWarning >
+      <head>
+        <link rel="icon" href="images/favicon.ico" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning
       >
         {/* 3. Envuelve tu contenido (Navbar y children) */}
         <ThemeProvider>
