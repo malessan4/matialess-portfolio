@@ -86,6 +86,20 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #242b27 rgb(0, 0, 0);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: #10b981;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(125%);
 }
 
 .glass-effect {

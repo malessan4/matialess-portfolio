@@ -24,7 +24,7 @@ export default function CertificatesPage() {
         return null;
     }
     const BackgroundParticles = () => (
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
             {[...Array(15)].map((_, i) => (
                 <div
                     key={i}
@@ -44,7 +44,7 @@ export default function CertificatesPage() {
 
     return (
         <main className={`min-h-screen pt-20 bg-gradient-to-br 
-                 transition-colors duration-1500 ease-in-out
+                 transition-colors duration-1500 ease-in-out overflow-x-hidden overflow-y-hidden
                  ${theme === 'light'
                 ? 'from-pink-900 via-purple-950 to-pink-900'
                 : 'from-gray-900 via-green-900 to-gray-900'
@@ -110,7 +110,7 @@ export default function CertificatesPage() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={`items-center justify-center w-full px-4 py-2 transform hover:scale-105 inline-block
-                         transition-colors duration-1500
+                         transition-colors duration-1500 
                          ${theme === 'light'
                                             ? 'bg-purple-600 hover:bg-purple-700 text-white'
                                             : 'bg-green-600 hover:bg-green-700 text-white'}`}>

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-// 1. Importa AnimatePresence para animar la salida
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from 'next-themes';
@@ -52,7 +51,7 @@ export default function Navbar() {
               href="/"
               // 3. Añade un onClick para cerrar el menú si se hace clic en el logo
               onClick={() => setIsMenuOpen(false)}
-              className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r
+              className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r
                 transition-colors duration-1500 ease-in-out
                 ${theme === 'light'
                   ? 'from-purple-500 to-pink-700'
@@ -66,13 +65,12 @@ export default function Navbar() {
           {/* --- MENÚ DE ESCRITORIO --- */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {/* (Tus links de escritorio quedan igual) */}
               <Link
                 href="/projects"
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-sm font-medium
+                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
@@ -83,7 +81,7 @@ export default function Navbar() {
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-sm font-medium
+                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
@@ -94,7 +92,7 @@ export default function Navbar() {
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-sm font-medium
+                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
@@ -105,7 +103,7 @@ export default function Navbar() {
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-sm font-medium
+                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
@@ -116,7 +114,7 @@ export default function Navbar() {
                 className={`
                   ${theme === 'light' ? 'bg-purple-600 hover:bg-purple-700' : 'bg-green-600 hover:bg-green-700'}
                   text-white
-                  px-4 py-2 rounded-md text-sm font-medium
+                  px-6 py-2 rounded-md text-xl font-medium
                   transition-all duration-1500 ease-in-out hover:scale-105 inline-block
                 `}
               >

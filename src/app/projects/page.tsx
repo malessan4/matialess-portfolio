@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 
 
 const BackgroundParticles = () => (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0 overflow-hidden">
         {[...Array(15)].map((_, i) => (
             <div
                 key={i}
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
     return (
         <main
             className={`min-h-screen pt-20 bg-gradient-to-r 
-                 transition-colors duration-1500 ease-in-out
+                 transition-colors duration-1500 ease-in-out overflow-x-hidden
                  ${theme === 'light'
                     ? 'from-pink-900 to-purple-950'
                     : 'from-gray-900 to-green-900'
@@ -86,10 +86,10 @@ export default function ProjectsPage() {
                     {projectsData.map((project, index) => (
                         <motion.div
                             key={index}
-                            className={`rounded-lg shadow-lg overflow-hidden flex flex-col group border transition-colors duration-1500
+                            className={`rounded-lg shadow-lg overflow-hidden flex flex-col group border transition-colors duration-1500 transform hover:scale-105
                             ${theme === 'light'
-                                    ? 'bg-purple-900 border-slate-600'
-                                    : 'bg-slate-800 border-slate-700'
+                                    ? 'bg-purple-900 border-purple-600'
+                                    : 'bg-slate-800 border-slate-500'
                                 }
                             `}
                             initial={{ opacity: 0, y: 20 }}
@@ -117,7 +117,7 @@ export default function ProjectsPage() {
                                         <span key={tagIndex} className={`transition-colors duration-1500
                             ${theme === 'light'
                                                 ? 'bg-violet-700 border-slate-600'
-                                                : 'bg-slate-900 border-slate-600'
+                                                : 'bg-green-900 border-slate-600'
                                             }text-xs font-medium px-2.5 py-1 rounded-full`}>
                                             {tag}
                                         </span>
@@ -128,12 +128,12 @@ export default function ProjectsPage() {
                                     <Link
                                         href={project.link || "#"}
                                         target="_blank"
-                                        className={`text-xl font-medium px-2.5 py-1 rounded-2xl inline-flex items-center transition-colors duration-400 
+                                        className={`text-xl font-medium px-2.5 py-1 rounded-2xl inline-flex items-center transition-colors duration-400 transform hover:scale-110 
                                                 ${theme === "light"
                                                 ? // Clases para MODO LIGHT
                                                 "bg-pink-900 border-slate-600 hover:bg-purple-600 hover:text-purple-300"
                                                 : // Clases para MODO DARK
-                                                "bg-green-800  hover:bg-green-500 hover:text-slate-700"
+                                                "bg-green-800  hover:bg-green-700 hover:text-slate-700"
                                             }rounded-full`}>
                                         Ver proyecto <ExternalLink className="w-4 h-4 ml-2" />
                                     </Link>
