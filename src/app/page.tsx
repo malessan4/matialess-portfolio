@@ -137,7 +137,6 @@ export default function Home() {
             <Link
               href="/projects"
               className={`px-8 py-3 border rounded-lg font-medium transform hover:scale-110 
-             
              transition-[transform,background-color,border-color]
              duration-[1000ms,300ms,1300ms]
              ease-in-out
