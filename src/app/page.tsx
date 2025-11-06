@@ -223,6 +223,7 @@ export default function Home() {
               { name: "TypeScript", icon: "📘" }, { name: "Node.js", icon: "🟢" }, { name: "Javascript", icon: "⚡️" },
               { name: "Tailwind CSS", icon: "🎨" },
               { name: "Python", icon: "🐍" }, { name: "Django", icon: "🚀" }, { name: "PyQt", icon: "🐍🖼️" }, { name: "Java", icon: "☕" },
+              { name: "Spring Boot", icon: "🌱" }, { name: "Hibernate", icon: "🗄️" },
               { name: "Docker", icon: "🐳" }, { name: "Git / Github", icon: "🔧" },
               { name: "PostgreSQL", icon: "🐘" }, { name: "GraphQL", icon: "🔺" }, { name: "GoLang", icon: "🐿️" }
             ].map((tech, index) => (
@@ -370,7 +371,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-4">Formación Destacada</h2>
 
           <p className={`text-center text-xl mb-12 transition-colors duration-150 ease-in-out
-            ${theme === 'light' ? 'text-purple-300' :'text-green-300'}
+            ${theme === 'light' ? 'text-purple-300' : 'text-green-300'}
              `}>Estos son algunos de los cursos y certificaciones que he completado.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
