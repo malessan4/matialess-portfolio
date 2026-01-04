@@ -9,10 +9,10 @@ export const projectsData: Project[] = [
     link: "https://folkode.com.ar/"
   },
   {
-    title: "Mediapp",
-    description: "Creacion de una aplicación web para la gestión de historias médicas. La aplicación permite a un usuario autorizado a crear historias clinicas, chequear estudios y consultas anteriores. Cumpliendo con las normativas de seguridad y privacidad de datos.",
-    tags: ["Go", "Redis-Server", "React", "TypeScript", "Tailwind CSS", "PostgreSQL"],
-    imageUrl: "/images/mediapp.jpeg",
+    title: "Consul-medic: Sistema de Gestión Pediátrica",
+    description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes.",
+    tags: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Prisma", "Docker", "Tailwind CSS"],
+    imageUrl: "/images/consul-medic.jpeg",
     link: ""
   },
   {
