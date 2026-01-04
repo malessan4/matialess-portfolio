@@ -220,12 +220,12 @@ export default function Home() {
             <BackgroundParticles />
             {[
               { name: "React", icon: "⚛️" }, { name: "Next.js", icon: "▲" },
-              { name: "TypeScript", icon: "📘" }, { name: "Node.js", icon: "🟢" }, { name: "Javascript", icon: "⚡️" },
+              { name: "TypeScript", icon: "📘" }, { name: "Node.js", icon: "🟢" }, { name: "Nest.js", icon: "🦁" }, { name: "Javascript", icon: "⚡️" },
               { name: "Tailwind CSS", icon: "🎨" },
               { name: "Python", icon: "🐍" }, { name: "Django", icon: "🚀" }, { name: "PyQt", icon: "🐍🖼️" }, { name: "Java", icon: "☕" },
               { name: "Spring Boot", icon: "🌱" }, { name: "Hibernate", icon: "🗄️" },
               { name: "Docker", icon: "🐳" }, { name: "Git / Github", icon: "🔧" },
-              { name: "PostgreSQL", icon: "🐘" }, { name: "GraphQL", icon: "🔺" }, { name: "GoLang", icon: "🐿️" }
+              { name: "PostgreSQL", icon: "🐘" }, { name: "GraphQL", icon: "🔺" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
