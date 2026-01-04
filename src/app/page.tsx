@@ -220,7 +220,7 @@ export default function Home() {
             <BackgroundParticles />
             {[
               { name: "React", icon: "⚛️" }, { name: "Next.js", icon: "▲" },
-              { name: "TypeScript", icon: "📘" }, { name: "Node.js", icon: "🟢" }, { name: "Nest.js", icon: "🦁" }, { name: "Javascript", icon: "⚡️" },
+              { name: "TypeScript", icon: "📘" }, { name: "Node.js", icon: "🟢" }, { name: "Express", icon: "🚂" }, { name: "Nest.js", icon: "🦁" }, { name: "Javascript", icon: "⚡️" },
               { name: "Tailwind CSS", icon: "🎨" },
               { name: "Python", icon: "🐍" }, { name: "Django", icon: "🚀" }, { name: "PyQt", icon: "🐍🖼️" }, { name: "Java", icon: "☕" },
               { name: "Spring Boot", icon: "🌱" }, { name: "Hibernate", icon: "🗄️" },
