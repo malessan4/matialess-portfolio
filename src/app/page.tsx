@@ -207,11 +207,9 @@ export default function Home() {
       <section
         id="technologies"
         className={`py-20 px-4 transition-colors duration-1500 ease-in-out
-                   ${theme === 'light'
-            // Contraste claro (vidrio) sobre fondo oscuro
-            ? 'bg-white/10'
-            // Contraste oscuro (vidrio) sobre fondo oscuro
-            : 'bg-emerald-900/30'
+          ${theme === 'light'
+            ? 'bg-white/10' // Contraste claro
+            : 'bg-emerald-900/30' // Contraste oscuro
           }`}
       >
         <div className="max-w-4xl mx-auto">
@@ -219,22 +217,46 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
             <BackgroundParticles />
             {[
-              { name: "React", icon: "⚛️" }, { name: "Next.js", icon: "▲" },
-              { name: "TypeScript", icon: "📘" }, { name: "Node.js", icon: "🟢" }, { name: "Express", icon: "🚂" }, { name: "Nest.js", icon: "🦁" }, { name: "Javascript", icon: "⚡️" },
+              // Frontend & Core
+              { name: "React", icon: "⚛️" },
+              { name: "Next.js", icon: "▲" },
+              { name: "TypeScript", icon: "📘" },
+              { name: "Javascript", icon: "⚡️" },
               { name: "Tailwind CSS", icon: "🎨" },
-              { name: "Python", icon: "🐍" }, { name: "Django", icon: "🚀" }, { name: "PyQt", icon: "🐍🖼️" }, { name: "Java", icon: "☕" },
-              { name: "Spring Boot", icon: "🌱" }, { name: "Hibernate", icon: "🗄️" },
-              { name: "Docker", icon: "🐳" }, { name: "Git / Github", icon: "🔧" },
-              { name: "PostgreSQL", icon: "🐘" }, { name: "GraphQL", icon: "🔺" },
+
+              // Node Ecosystem
+              { name: "Node.js", icon: "🟢" },
+              { name: "Express", icon: "🚂" },
+              { name: "Nest.js", icon: "🦁" },
+
+              // Python Ecosystem
+              { name: "Python", icon: "🐍" },
+              { name: "FastAPI", icon: "🏎️" },
+              { name: "Django", icon: "🚀" },
+              { name: "PyQt", icon: "🖼️" },
+
+              // Java Ecosystem
+              { name: "Java", icon: "☕" },
+              { name: "Spring Boot", icon: "🌱" },
+
+              // Data & Backend Services
+              { name: "PostgreSQL", icon: "🐘" },
+              { name: "Supabase", icon: "⚡" },
+              { name: "GraphQL", icon: "🔺" },
+              { name: "Hibernate", icon: "🗄️" },
+
+              // DevOps & Cloud
+              { name: "Docker", icon: "🐳" },
+              { name: "Git / Github", icon: "🔧" },
+              { name: "Vercel", icon: "🔼" },
+              { name: "Render", icon: "☁️" },
             ].map((tech, index) => (
               <motion.div
                 key={index}
                 className={`p-4 rounded-lg text-center backdrop-blur-sm 
-                           transition-colors duration-1500 ease-in-out
-                           ${theme === 'light'
-                    // Vidrio más claro
+                    transition-colors duration-1500 ease-in-out
+                    ${theme === 'light'
                     ? 'bg-white/20 hover:bg-white/30'
-                    // Vidrio verde
                     : 'bg-emerald-700/50 hover:bg-emerald-900/70'
                   }`}
                 whileHover={{ scale: 1.05 }}
@@ -250,7 +272,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section id="about" className="py-20 px-4">
 
         <div className="max-w-5xl mx-auto">
