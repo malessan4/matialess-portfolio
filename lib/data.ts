@@ -9,11 +9,11 @@ export const projectsData: Project[] = [
     link: "https://folkode.com.ar/"
   },
   {
-    title: "Consul-medic: Sistema de Gestión Pediátrica",
+    title: "Consul-medic: Sistema de Gestión Médica",
     description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes.",
     tags: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Prisma", "Docker", "Tailwind CSS"],
-    imageUrl: "/images/consul-medic.jpeg",
-    link: ""
+    imageUrl: "/images/consul-medic1.jpeg",
+    link: "https://consul-medic.vercel.app/login"
   },
   {
     title: "RadioGo",
