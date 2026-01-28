@@ -10,10 +10,10 @@ export const projectsData: Project[] = [
   },
   {
     title: "Consul-medic: Sistema de Gestión Médica",
-    description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes.",
+    description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes. Para ingresar como invitado, invitado@consulmedic.ar y como contraseña:invi1234",
     tags: ["Next.js", "Nest.js", "TypeScript", "PostgreSQL", "Supabase", "Prisma", "Docker", "Tailwind CSS"],
     imageUrl: "/images/consul-medic1.jpeg",
-    link: "https://consul-medic.vercel.app/login"
+    link: "https://consulmedic.ar/login"
   },
   {
     title: "RadioGo",
