@@ -80,7 +80,7 @@ export default function Home() {
     }
   };
 
-  const currentCareerProgress = 43;
+  const currentCareerProgress = 52;
 
 
 
