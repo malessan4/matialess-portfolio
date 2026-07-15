@@ -10,10 +10,10 @@ export const projectsData: Project[] = [
   },
   {
     title: "Consul-medic: Sistema de Gestión Médica",
-    description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes. Para ingresar como invitado, invitado@consulmedic.ar y como contraseña:invi1234",
+    description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes.",
     tags: ["Next.js", "Nest.js", "TypeScript", "PostgreSQL", "Supabase", "Prisma", "Docker", "Tailwind CSS"],
     imageUrl: "/images/consul-dashboard.png",
-    link: "https://consulmedic.ar/login"
+    link: "https://consul-medic.vercel.app/"
   },
   {
     title: "RadioGo",
@@ -35,8 +35,28 @@ export const projectsData: Project[] = [
     tags: ["Django", "React", "Tailwind"],
     imageUrl: "images/congreso.png",
     link: "https://www.congresologistica.unab.edu.ar/"
-  }
-
+  },
+  {
+    title: "Inmobiout",
+    description: "Inmobiout - Plataforma Inmobiliaria Full-Stack Plataforma integral de gestión y visualización de propiedades inmobiliarias diseñada para conectar agencias con clientes potenciales. Desarrollada con Next.js (App Router), Tailwind CSS y Supabase (PostgreSQL + Auth). Cuenta con dos experiencias diferenciadas: un portal público interactivo con filtros de búsqueda avanzados, modo oscuro/claro y generación dinámica de fichas técnicas en PDF; y un panel de administración privado (Dashboard) protegido por roles de usuario, que permite a las agencias gestionar su inventario de propiedades, visualizar métricas en tiempo real y administrar los prospectos (leads) captados a través de los formularios de contacto integrados.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Supabase (PostgreSQL + Auth"],
+    imageUrl: "",
+    link: "https://inmobi-liard.vercel.app/propiedades"
+  },
+  {
+    title: "Rachaplus",
+    description: "Racha+ es una plataforma inteligente de gestión de hábitos diseñada para ayudarte a construir consistencia y alcanzar tus metas. A través de un sistema de seguimiento visual y motivador, los usuarios pueden registrar sus rutinas diarias, mantener rachas (streaks) y visualizar su progreso a lo largo del tiempo. Con un enfoque en la simplicidad y la retención, la aplicación ofrece una experiencia gratuita sólida, y cuenta con un modelo de suscripción premium (Racha+ Pro) que desbloquea funciones analíticas avanzadas, integrado de forma segura con Mercado Pago.",
+    tags: ["Next.js (App Router)", "Tailwind CSS", "react-big-calendar", "Server Actions de Next.js", "Prisma ORM", "PostgreSQL"],
+    imageUrl: "https://gestor-habitos-pendientes.vercel.app/auth",
+    link: "#"
+  },
+  {
+    title: "Jamtime",
+    description: "JamTime es una aplicación web diseñada para resolver uno de los mayores problemas de las bandas de música y los grupos de trabajo: encontrar un horario en el que todos estén disponibles. A través de un calendario interactivo y visual, los usuarios pueden crear salas, compartir un código de acceso y pintar sus bloques de disponibilidad, permitiendo visualizar al instante las franjas horarias donde todos coinciden.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Server Actions de Next.js", "Prisma ORM", "PostgreSQL"],
+    imageUrl: "",
+    link: "https://jamtime-liart.vercel.app/"
+  },
 ];
 
 export const certificatesData = [
