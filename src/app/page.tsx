@@ -325,6 +325,9 @@ export default function Home() {
               <p className="text-lg mb-4 leading-relaxed lg:text-justify" >
                 Actualmente estoy cursando la <span className="font-bold text">Tecnicatura en Programación</span> en la Universidad Nacional Guillermo Brown, donde llevo completado el {currentCareerProgress}% de la carrera.
               </p>
+              <p className="text-lg mb-4 leading-relaxed lg:text-justify" >
+                También estoy cursando la carrera de <span className="font-bold text">Analista Universitario de Gestión de Riesgos Cibernéticos</span>, donde llevo completado el {currentCyberRiskProgress}% de la carrera.
+              </p>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
                 Finalicé la<span className="font-bold"> Licenciatura en Composición con Medios Electroacústicos</span>, en la Universidad Nacional de Quilmes, esta carrera fue mi acercamiento y mi actual pasión por la computación y programación.
               </p>
@@ -378,7 +381,7 @@ export default function Home() {
                   primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
                   secondaryColor={theme === 'light' ? '#5c595fff' : '#4b5563'}
                 />
-                <p className="text-sm font-semibold text-center max-w-[150px]">Gestión de Riesgos Cibernéticos</p>
+                <p className="text-sm font-semibold text-center max-w-[150px]">Analista Universitario de Gestión de Riesgos Cibernéticos</p>
               </div>
 
               <div className="flex flex-col items-center gap-2">
