@@ -80,7 +80,9 @@ export default function Home() {
     }
   };
 
-  const currentCareerProgress = 43;
+  const currentCareerProgress = 52;
+  const currentCyberRiskProgress = 22;
+
 
 
 
@@ -330,7 +332,7 @@ export default function Home() {
                 Cuando no estoy programando, me gusta componer música y explorar nuevas tecnologías emergentes.
               </p>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
-                Fuera del ámbito tecnológico, trabajé como administrativo encargado del area de Urgencias e Internaciones en la Guardia del Sanatorio Juncal desde 2015 - 2025.
+                Fuera del ámbito tecnológico, trabajé como administrativo encargado del area de Urgencias e Internaciones en la Guardia del Sanatorio Juncal desde 2015 - 2026.
               </p>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
                 Para más información puedes descargar mi Curriculum Vitae
@@ -355,7 +357,7 @@ export default function Home() {
                 <Download className="w-5 h-5" />
               </a>
             </div>
-            <div className="lg:w-1/2 flex flex-col sm:flex-row justify-center items-center gap-8 mt-6 lg:mt-0">
+            <div className="lg:w-1/2 flex flex-wrap justify-center items-center gap-8 mt-6 lg:mt-0">
 
               <div className="flex flex-col items-center gap-2">
                 <DonutChart
@@ -367,6 +369,18 @@ export default function Home() {
                 />
                 <p className="text-sm font-semibold text-center max-w-[150px]">Tecnicatura en Programación</p>
               </div>
+              
+              <div className="flex flex-col items-center gap-2">
+                <DonutChart
+                  percentage={currentCyberRiskProgress}
+                  size={160}
+                  strokeWidth={14}
+                  primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
+                  secondaryColor={theme === 'light' ? '#5c595fff' : '#4b5563'}
+                />
+                <p className="text-sm font-semibold text-center max-w-[150px]">Gestión de Riesgos Cibernéticos</p>
+              </div>
+
               <div className="flex flex-col items-center gap-2">
                 <DonutChart
                   percentage={completedDegreeProgress}
