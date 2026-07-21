@@ -57,6 +57,13 @@ export const projectsData: Project[] = [
     imageUrl: "images/jamtime.png",
     link: "https://jamtime-liart.vercel.app/"
   },
+  {
+    title: "Nido - Organizador Familiar Full Stack",
+    description: "Nido es una plataforma integral diseñada para facilitar la organización y comunicación dentro del núcleo familiar. Cuenta con un tablero Kanban interactivo (Drag & Drop) para el seguimiento de tareas, un calendario sincronizado para eventos y un sistema de chat integrado. Desarrollada con una arquitectura cliente-servidor robusta: el backend fue construido con Java y Spring Boot utilizando Spring Security y JWT para una autenticación sin estado (stateless), mientras que el frontend está desarrollado en Next.js con Tailwind CSS, ofreciendo una experiencia fluida, modo oscuro dinámico (glassmorphism) y total responsividad.",
+    tags: ["Next.js", "Java", "Spring Boot", "Spring Security", "PostgreSQL", "Tailwind CSS", "Framer Motion"],
+    imageUrl: "/images/nido.png",
+    link: "https://family-organizer-nine.vercel.app/"
+  },
 ];
 
 export const certificatesData = [
