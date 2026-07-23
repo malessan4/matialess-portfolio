@@ -23,11 +23,11 @@ export const projectsData: Project[] = [
     link: "https://www.radiogo.com.ar/"
   },
   {
-    title: "DeLorean Parts",
-    description: "E-commerce Empresarial de gestión de autopartes",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Express.js", "PostgreSQL"],
-    imageUrl: "images/autopartes.webp",
-    link: "https://web-autopartes.vercel.app/"
+    title: "Nido - Organizador Familiar PWA",
+    description: "Plataforma integral (PWA) diseñada para la organización del núcleo familiar. Cuenta con Kanban interactivo (Drag & Drop), calendario y chat en tiempo real. Para optimizar el consumo de recursos en servidores de bajos recursos, el backend fue reescrito completamente de cero en Go (Golang) utilizando Gin y GORM, logrando un consumo de RAM ultra ligero (~20MB). Incluye un sistema de Notificaciones Web Push nativas gestionado mediante un CRON Job en Go y Service Workers en el frontend para alertar sobre tareas vencidas y nuevos mensajes. El frontend está desarrollado en Next.js con Tailwind CSS, ofreciendo un diseño 'glassmorphism' totalmente responsivo e instalable en dispositivos móviles.",
+    tags: ["Next.js", "Go (Golang)", "Gin", "GORM", "PostgreSQL", "PWA", "Web Push API", "Tailwind CSS"],
+    imageUrl: "/images/nido.png",
+    link: "https://nido-three-omega.vercel.app/"
   },
   {
     title: "Congreso de Logista y Transporte UNAB",
