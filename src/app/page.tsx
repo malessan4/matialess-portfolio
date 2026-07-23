@@ -222,6 +222,7 @@ export default function Home() {
               // Frontend & Core
               { name: "React", icon: "⚛️" },
               { name: "Next.js", icon: "▲" },
+              { name: "Vue.js", icon: "🖖" },
               { name: "TypeScript", icon: "📘" },
               { name: "Javascript", icon: "⚡️" },
               { name: "Tailwind CSS", icon: "🎨" },
@@ -240,6 +241,15 @@ export default function Home() {
               // Java Ecosystem
               { name: "Java", icon: "☕" },
               { name: "Spring Boot", icon: "🌱" },
+              { name: "Spring", icon: "🍃" },
+
+              // Go Ecosystem
+              { name: "Go", icon: "🐹" },
+
+              // Mobile Ecosystem
+              { name: "React Native", icon: "📱" },
+              { name: "Kotlin", icon: "🤖" },
+              { name: "Android Studio", icon: "🛠️" },
 
               // Data & Backend Services
               { name: "PostgreSQL", icon: "🐘" },
