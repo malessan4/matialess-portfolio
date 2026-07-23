@@ -1,13 +1,7 @@
 import { Project } from "./types";
 
 export const projectsData: Project[] = [
-  {
-    title: "Landing Page de Folkode",
-    description: "Construcción de una landing page para Folkode, un equipo de desarolladores de software. La página presenta información sobre los proyectos que armo el equipo, testimonios de clientes y un formulario de contacto.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
-    imageUrl: "/images/folkode.png",
-    link: "https://folkode.com.ar/"
-  },
+
   {
     title: "Consul-medic: Sistema de Gestión Médica",
     description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes.",
@@ -15,13 +9,7 @@ export const projectsData: Project[] = [
     imageUrl: "/images/consul-dashboard.png",
     link: "https://consul-medic.vercel.app/"
   },
-  {
-    title: "RadioGo",
-    description: "Pagina web para una radio online. La página permite a los usuarios escuchar la transmisión en vivo, ver el horario de programas y contactar a la estación.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "IceCast"],
-    imageUrl: "/images/radiogo.webp",
-    link: "https://www.radiogo.com.ar/"
-  },
+
   {
     title: "Nido - Organizador Familiar PWA",
     description: "Plataforma integral (PWA) diseñada para la organización del núcleo familiar. Cuenta con Kanban interactivo (Drag & Drop), calendario y chat en tiempo real. Para optimizar el consumo de recursos en servidores de bajos recursos, el backend fue reescrito completamente de cero en Go (Golang) utilizando Gin y GORM, logrando un consumo de RAM ultra ligero (~20MB). Incluye un sistema de Notificaciones Web Push nativas gestionado mediante un CRON Job en Go y Service Workers en el frontend para alertar sobre tareas vencidas y nuevos mensajes. El frontend está desarrollado en Next.js con Tailwind CSS, ofreciendo un diseño 'glassmorphism' totalmente responsivo e instalable en dispositivos móviles.",
@@ -29,13 +17,7 @@ export const projectsData: Project[] = [
     imageUrl: "/images/nido.png",
     link: "https://nido-three-omega.vercel.app/"
   },
-  {
-    title: "Congreso de Logista y Transporte UNAB",
-    description: "Página oficial del Congreso De Logística y Transporte de la Universidad Nacional Guillermo Brown",
-    tags: ["Django", "React", "Tailwind"],
-    imageUrl: "images/congreso.png",
-    link: "https://www.congresologistica.unab.edu.ar/"
-  },
+
   {
     title: "Inmobiout",
     description: "Inmobiout - Plataforma Inmobiliaria Full-Stack Plataforma integral de gestión y visualización de propiedades inmobiliarias diseñada para conectar agencias con clientes potenciales. Desarrollada con Next.js (App Router), Tailwind CSS y Supabase (PostgreSQL + Auth). Cuenta con dos experiencias diferenciadas: un portal público interactivo con filtros de búsqueda avanzados, modo oscuro/claro y generación dinámica de fichas técnicas en PDF; y un panel de administración privado (Dashboard) protegido por roles de usuario, que permite a las agencias gestionar su inventario de propiedades, visualizar métricas en tiempo real y administrar los prospectos (leads) captados a través de los formularios de contacto integrados.",
@@ -58,11 +40,39 @@ export const projectsData: Project[] = [
     link: "https://jamtime-liart.vercel.app/"
   },
   {
+    title: "Bella Boutique - E-Commerce Premium",
+    description: "Plataforma de comercio electrónico a medida, diseñada con un enfoque estético premium 'dark rose gold'. El frontend fue desarrollado en Vue.js (Vite), utilizando CSS Vanilla puro para lograr un control milimétrico sobre las micro-animaciones y efectos de 'glassmorphism' sin depender de frameworks pesados. El backend, robusto y ultrarrápido, está construido en Go (Golang) con Gin y GORM. Incluye un panel administrativo (CMS) personalizado y protegido por JWT para la gestión integral del inventario, permitiendo administrar productos, precios de oferta, stock y la vinculación dinámica de imágenes según las variantes de color elegidas por el cliente. Todo respaldado por una base de datos PostgreSQL.",
+    tags: ["Vue.js", "Vite", "Go (Golang)", "Gin", "GORM", "PostgreSQL", "Vanilla CSS", "E-Commerce"],
+    imageUrl: "/images/bellaboutique.png",
+    link: "https://bellaboutique-azure.vercel.app/"
+  },
+  {
     title: "Nido - Organizador Familiar Full Stack",
     description: "Nido es una plataforma integral diseñada para facilitar la organización y comunicación dentro del núcleo familiar. Cuenta con un tablero Kanban interactivo (Drag & Drop) para el seguimiento de tareas, un calendario sincronizado para eventos y un sistema de chat integrado. Desarrollada con una arquitectura cliente-servidor robusta: el backend fue construido con Java y Spring Boot utilizando Spring Security y JWT para una autenticación sin estado (stateless), mientras que el frontend está desarrollado en Next.js con Tailwind CSS, ofreciendo una experiencia fluida, modo oscuro dinámico (glassmorphism) y total responsividad.",
     tags: ["Next.js", "Java", "Spring Boot", "Spring Security", "PostgreSQL", "Tailwind CSS", "Framer Motion"],
     imageUrl: "/images/nido.png",
     link: "https://family-organizer-nine.vercel.app/"
+  },
+  {
+    title: "Congreso de Logista y Transporte UNAB",
+    description: "Página oficial del Congreso De Logística y Transporte de la Universidad Nacional Guillermo Brown",
+    tags: ["Django", "React", "Tailwind"],
+    imageUrl: "images/congreso.png",
+    link: "https://www.congresologistica.unab.edu.ar/"
+  },
+  {
+    title: "RadioGo",
+    description: "Pagina web para una radio online. La página permite a los usuarios escuchar la transmisión en vivo, ver el horario de programas y contactar a la estación.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "IceCast"],
+    imageUrl: "/images/radiogo.webp",
+    link: "https://www.radiogo.com.ar/"
+  },
+  {
+    title: "Landing Page de Folkode",
+    description: "Construcción de una landing page para Folkode, un equipo de desarolladores de software. La página presenta información sobre los proyectos que armo el equipo, testimonios de clientes y un formulario de contacto.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
+    imageUrl: "/images/folkode.png",
+    link: "https://folkode.com.ar/"
   },
 ];
 
