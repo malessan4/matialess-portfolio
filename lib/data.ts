@@ -43,7 +43,7 @@ export const projectsData: Project[] = [
     title: "Bella Boutique - E-Commerce Premium",
     description: "Plataforma de comercio electrónico a medida, diseñada con un enfoque estético premium 'dark rose gold'. El frontend fue desarrollado en Vue.js (Vite), utilizando CSS Vanilla puro para lograr un control milimétrico sobre las micro-animaciones y efectos de 'glassmorphism' sin depender de frameworks pesados. El backend, robusto y ultrarrápido, está construido en Go (Golang) con Gin y GORM. Incluye un panel administrativo (CMS) personalizado y protegido por JWT para la gestión integral del inventario, permitiendo administrar productos, precios de oferta, stock y la vinculación dinámica de imágenes según las variantes de color elegidas por el cliente. Todo respaldado por una base de datos PostgreSQL.",
     tags: ["Vue.js", "Vite", "Go (Golang)", "Gin", "GORM", "PostgreSQL", "Vanilla CSS", "E-Commerce"],
-    imageUrl: "/images/bellaboutique.png",
+    imageUrl: "/images/bella.png",
     link: "https://bellaboutique-azure.vercel.app/"
   },
   {
