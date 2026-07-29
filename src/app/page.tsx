@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -82,9 +81,6 @@ export default function Home() {
 
   const currentCareerProgress = 52;
   const currentCyberRiskProgress = 22;
-
-
-
 
   return (
     <main
@@ -227,6 +223,11 @@ export default function Home() {
               { name: "Javascript", icon: "⚡️" },
               { name: "Tailwind CSS", icon: "🎨" },
 
+              // Microsoft & .NET Ecosystem
+              { name: "C#", icon: "🔷" },
+              { name: ".NET 9", icon: "🌐" },
+              { name: "Entity Framework", icon: "🧩" },
+
               // Node Ecosystem
               { name: "Node.js", icon: "🟢" },
               { name: "Express", icon: "🚂" },
@@ -253,6 +254,7 @@ export default function Home() {
 
               // Data & Backend Services
               { name: "PostgreSQL", icon: "🐘" },
+              { name: "SQLite", icon: "🪶" },
               { name: "Supabase", icon: "⚡" },
               { name: "GraphQL", icon: "🔺" },
               { name: "Hibernate", icon: "🗄️" },

@@ -11,6 +11,14 @@ export const projectsData: Project[] = [
   },
 
   {
+    title: "Core Bancario - API de Gestión de Cuentas",
+    description: "Desarrollo Full Stack de un sistema Core Bancario enfocado en buenas prácticas y estándares corporativos. El backend fue construido en .NET 9 (C#) utilizando una arquitectura en capas, Inyección de Dependencias, patrón DTO y Entity Framework Core con SQLite para la persistencia de datos, exponiendo una API RESTful completamente documentada. El frontend interactivo, desarrollado con Next.js (App Router) y TypeScript, consume la API en tiempo real y ofrece una experiencia de usuario premium mediante un diseño 'Glassmorphism', modo claro/oscuro dinámico e iconografía moderna, todo estilizado con Vanilla CSS puro.",
+    tags: [".NET 9", "C#", "ASP.NET Core", "Entity Framework", "SQLite", "Next.js", "TypeScript", "Docker"],
+    imageUrl: "/images/banco.png",
+    link: "https://gestion-cuentas-5y8cupyca-malessan4s-projects.vercel.app/"
+  },
+
+  {
     title: "Nido - Organizador Familiar PWA",
     description: "Plataforma integral (PWA) diseñada para la organización del núcleo familiar. Cuenta con Kanban interactivo (Drag & Drop), calendario y chat en tiempo real. Para optimizar el consumo de recursos en servidores de bajos recursos, el backend fue reescrito completamente de cero en Go (Golang) utilizando Gin y GORM, logrando un consumo de RAM ultra ligero (~20MB). Incluye un sistema de Notificaciones Web Push nativas gestionado mediante un CRON Job en Go y Service Workers en el frontend para alertar sobre tareas vencidas y nuevos mensajes. El frontend está desarrollado en Next.js con Tailwind CSS, ofreciendo un diseño 'glassmorphism' totalmente responsivo e instalable en dispositivos móviles.",
     tags: ["Next.js", "Go (Golang)", "Gin", "GORM", "PostgreSQL", "PWA", "Web Push API", "Tailwind CSS"],
