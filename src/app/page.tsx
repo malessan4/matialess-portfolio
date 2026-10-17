@@ -212,6 +212,7 @@ export default function Home() {
             <BackgroundParticles />
             {[
               // Data & Analytics (Destacado)
+              { name: "SQL", icon: "🗄️" },
               { name: "R Language", icon: "📊" },
               { name: "ggplot2", icon: "📈" },
               { name: "SQL Modeling", icon: "📐" },
