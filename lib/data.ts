@@ -1,119 +1,168 @@
-import { Project } from "./types";
+import { Project, CertificateItem } from "./types";
 
 export const projectsData: Project[] = [
-
   {
     title: "Consul-medic: Sistema de Gestión Médica",
-    description: "Desarrollo de una plataforma Full Stack para la digitalización de consultorios médicos. El sistema gestiona historias clínicas, adjunta estudios médicos (imágenes/PDFs) mediante almacenamiento de objetos y genera recetas digitales listas para imprimir. Incluye un dashboard interactivo para métricas de pacientes.",
-    tags: ["Next.js", "Nest.js", "TypeScript", "PostgreSQL", "Supabase", "Prisma", "Docker", "Tailwind CSS"],
+    titleEn: "Consul-medic: Clinical Management Platform",
+    description: "Desarrollo de una plataforma Full Stack para la digitalización integral de consultorios médicos. El sistema gestiona historias clínicas electrónicas, adjunta estudios diagnósticos (imágenes/PDFs) mediante almacenamiento seguro de objetos y genera recetas digitales para impresión. Incluye un dashboard interactivo en tiempo real con métricas clave de pacientes (KPIs) y modelado relacional de datos en PostgreSQL con Prisma ORM y Supabase.",
+    descriptionEn: "Full Stack clinical digitalization platform. Features electronic health records (EHR), diagnostic study attachments (images/PDFs) via secure object storage, printable digital prescriptions, and an interactive real-time KPI dashboard for patient metrics with relational SQL modeling in PostgreSQL via Prisma ORM and Supabase.",
+    tags: ["Next.js", "Nest.js", "TypeScript", "PostgreSQL", "Supabase", "Prisma ORM", "Real-Time KPI Dashboard", "SQL Modeling", "Docker", "Tailwind CSS"],
     imageUrl: "/images/consul-dashboard.png",
     link: "https://consul-medic.vercel.app/"
   },
-
   {
     title: "Core Bancario - API de Gestión de Cuentas",
-    description: "Desarrollo Full Stack de un sistema Core Bancario enfocado en buenas prácticas y estándares corporativos. El backend fue construido en .NET 9 (C#) utilizando una arquitectura en capas, Inyección de Dependencias, patrón DTO y Entity Framework Core con SQLite para la persistencia de datos, exponiendo una API RESTful completamente documentada. El frontend interactivo, desarrollado con Next.js (App Router) y TypeScript, consume la API en tiempo real y ofrece una experiencia de usuario premium mediante un diseño 'Glassmorphism', modo claro/oscuro dinámico e iconografía moderna, todo estilizado con Vanilla CSS puro.",
-    tags: [".NET 9", "C#", "ASP.NET Core", "Entity Framework", "SQLite", "Next.js", "TypeScript", "Docker"],
+    titleEn: "Core Banking - Account Management System",
+    description: "Desarrollo Full Stack de un sistema Core Bancario corporativo centrado en integridad transaccional (ACID) y alta disponibilidad. Backend construido en .NET 9 (C#) con Arquitectura Limpia en capas, Inyección de Dependencias, patrón DTO y Entity Framework Core con SQLite para persistencia y auditoría contable, exponiendo una API RESTful documentada. Frontend interactivo en Next.js (App Router) y TypeScript con diseño glassmorphism, modo oscuro/claro y actualización en tiempo real.",
+    descriptionEn: "Corporate Full Stack Core Banking system focused on ACID transactional integrity and high availability. Backend engineered in .NET 9 (C#) with Clean Layered Architecture, Dependency Injection, DTO pattern, and Entity Framework Core with SQLite for account persistence and financial auditing. Interactive Next.js (App Router) frontend with TypeScript, responsive glassmorphism UI, and real-time state synchronization.",
+    tags: [".NET 9", "C#", "ASP.NET Core", "Entity Framework", "SQLite", "ACID Transactions", "Next.js", "TypeScript", "Docker"],
     imageUrl: "/images/banco.png",
     link: "https://gestion-cuentas-5y8cupyca-malessan4s-projects.vercel.app/"
   },
-
+  {
+    title: "Análisis Estadístico y Visualización con R & ggplot2",
+    titleEn: "Statistical Analysis & Data Visualization with R & ggplot2",
+    description: "Análisis exploratorio de datos (EDA), limpieza estructurada y visualización estadística avanzada utilizando R y ggplot2. Enfoque en modelado de datos, análisis de correlaciones multivariables, estimación de densidades de probabilidad y detección algorítmica de desvíos y anomalías (outliers) operativas a partir de datasets reales.",
+    descriptionEn: "Exploratory Data Analysis (EDA), structured data wrangling, and advanced statistical visualization using R and ggplot2. Focused on relational data modeling, multivariate correlation analysis, probability density distributions, and algorithmic detection of operational outliers from real-world datasets.",
+    tags: ["R", "ggplot2", "EDA", "Statistical Analysis", "Data Modeling", "Outlier Detection", "Data Cleaning"],
+    imageUrl: "/images/r-analytics.svg",
+    link: "https://github.com/malessan4"
+  },
   {
     title: "Nido - Organizador Familiar PWA",
-    description: "Plataforma integral (PWA) diseñada para la organización del núcleo familiar. Cuenta con Kanban interactivo (Drag & Drop), calendario y chat en tiempo real. Para optimizar el consumo de recursos en servidores de bajos recursos, el backend fue reescrito completamente de cero en Go (Golang) utilizando Gin y GORM, logrando un consumo de RAM ultra ligero (~20MB). Incluye un sistema de Notificaciones Web Push nativas gestionado mediante un CRON Job en Go y Service Workers en el frontend para alertar sobre tareas vencidas y nuevos mensajes. El frontend está desarrollado en Next.js con Tailwind CSS, ofreciendo un diseño 'glassmorphism' totalmente responsivo e instalable en dispositivos móviles.",
+    titleEn: "Nido - Family Organizer PWA",
+    description: "Plataforma integral (PWA) para la coordinación y gestión operativa de tareas del hogar. Cuenta con tablero Kanban interactivo (Drag & Drop), calendario sincronizado y chat en tiempo real. Backend ultrarrápido y de bajo consumo de recursos (~20MB RAM) construido en Go (Golang) con Gin y GORM. Incluye sistema automatizado de notificaciones Web Push nativas gestionado mediante CRON Jobs concurrentes en Go y Service Workers.",
+    descriptionEn: "Comprehensive Progressive Web App (PWA) for household task coordination and scheduling. Features interactive Kanban board (Drag & Drop), calendar, and real-time chat. Ultra-lightweight backend (~20MB RAM) built in Go (Golang) with Gin and GORM. Includes automated native Web Push notifications orchestrated via concurrent Go CRON Jobs and Service Workers.",
     tags: ["Next.js", "Go (Golang)", "Gin", "GORM", "PostgreSQL", "PWA", "Web Push API", "Tailwind CSS"],
     imageUrl: "/images/nido.png",
     link: "https://nido-three-omega.vercel.app/"
   },
-
   {
-    title: "Inmobiout",
-    description: "Inmobiout - Plataforma Inmobiliaria Full-Stack Plataforma integral de gestión y visualización de propiedades inmobiliarias diseñada para conectar agencias con clientes potenciales. Desarrollada con Next.js (App Router), Tailwind CSS y Supabase (PostgreSQL + Auth). Cuenta con dos experiencias diferenciadas: un portal público interactivo con filtros de búsqueda avanzados, modo oscuro/claro y generación dinámica de fichas técnicas en PDF; y un panel de administración privado (Dashboard) protegido por roles de usuario, que permite a las agencias gestionar su inventario de propiedades, visualizar métricas en tiempo real y administrar los prospectos (leads) captados a través de los formularios de contacto integrados.",
-    tags: ["Next.js", "React", "Tailwind CSS", "Supabase (PostgreSQL + Auth"],
+    title: "Inmobiout - Plataforma Inmobiliaria",
+    titleEn: "Inmobiout - Real Estate Platform",
+    description: "Plataforma integral de gestión y catálogo de propiedades inmobiliarias. Desarrollada con Next.js (App Router), Tailwind CSS y Supabase (PostgreSQL + Auth). Dispone de portal público con filtros de búsqueda multidimensionales y exportación dinámica de fichas técnicas en PDF, junto a un panel de administración privado (Dashboard con KPIs) para control de inventario, auditoría de leads y métricas en tiempo real.",
+    descriptionEn: "End-to-end real estate inventory and catalog platform built with Next.js (App Router), Tailwind CSS, and Supabase (PostgreSQL + Auth). Features a public portal with multidimensional search filters and dynamic PDF generation, plus a private admin dashboard with real-time KPIs for inventory management and lead conversion analytics.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Supabase", "PostgreSQL", "Real-Time KPI Dashboard", "SQL Modeling"],
     imageUrl: "images/inmobiout.png",
     link: "https://inmobi-liard.vercel.app/propiedades"
   },
   {
-    title: "Racha+",
-    description: "Racha+ es una plataforma inteligente de gestión de hábitos diseñada para ayudarte a construir consistencia y alcanzar tus metas. A través de un sistema de seguimiento visual y motivador, los usuarios pueden registrar sus rutinas diarias, mantener rachas (streaks) y visualizar su progreso a lo largo del tiempo. Con un enfoque en la simplicidad y la retención, la aplicación ofrece una experiencia gratuita sólida, y cuenta con un modelo de suscripción premium (Racha+ Pro) que desbloquea funciones analíticas avanzadas, integrado de forma segura con Mercado Pago.",
-    tags: ["Next.js (App Router)", "Tailwind CSS", "react-big-calendar", "Server Actions de Next.js", "Prisma ORM", "PostgreSQL"],
+    title: "Racha+ - Hábitos & Suscripciones",
+    titleEn: "Racha+ - Habit Tracker & Subscriptions",
+    description: "Plataforma inteligente de seguimiento y análisis de hábitos diarios. Con un modelo de monetización SaaS (Racha+ Pro), integra de forma segura Webhooks de Mercado Pago para la conciliación automática de estados de pago, ciclo de vida de suscripciones y transacciones seguras (ACID) en PostgreSQL a través de Prisma ORM.",
+    descriptionEn: "Intelligent daily habit analytics and consistency platform. Features a SaaS subscription model (Racha+ Pro) with secure Mercado Pago Webhooks for automated payment reconciliation, subscription lifecycle events, and ACID-compliant transactional persistence in PostgreSQL via Prisma ORM.",
+    tags: ["Next.js (App Router)", "Prisma ORM", "PostgreSQL", "Mercado Pago Webhooks", "Payment Reconciliation", "ACID Transactions"],
     imageUrl: "images/rachaplus.png",
     link: "https://gestor-habitos-pendientes.vercel.app/auth"
   },
   {
-    title: "Jamtime",
-    description: "JamTime es una aplicación web diseñada para resolver uno de los mayores problemas de las bandas de música y los grupos de trabajo: encontrar un horario en el que todos estén disponibles. A través de un calendario interactivo y visual, los usuarios pueden crear salas, compartir un código de acceso y pintar sus bloques de disponibilidad, permitiendo visualizar al instante las franjas horarias donde todos coinciden.",
-    tags: ["Next.js", "React", "Tailwind CSS", "Server Actions de Next.js", "Prisma ORM", "PostgreSQL"],
+    title: "Jamtime - Coordinador de Horarios",
+    titleEn: "Jamtime - Schedule Availability Matcher",
+    description: "Herramienta colaborativa orientada a optimizar la coordinación horaria de grupos de trabajo y bandas musicales. A través de un calendario interactivo en cuadrícula, calcula en tiempo real las intersecciones de disponibilidad de múltiples participantes compartiendo un código de sala seguro.",
+    descriptionEn: "Collaborative scheduling platform designed to optimize availability matching for work teams and music bands. Using an interactive grid calendar, it calculates multi-user availability intersections in real time via secure room invite codes.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Server Actions", "Prisma ORM", "PostgreSQL"],
     imageUrl: "images/jamtime.png",
     link: "https://jamtime-liart.vercel.app/"
   },
   {
     title: "Bella Boutique - E-Commerce Premium",
-    description: "Plataforma de comercio electrónico a medida, diseñada con un enfoque estético premium 'dark rose gold'. El frontend fue desarrollado en Vue.js (Vite), utilizando CSS Vanilla puro para lograr un control milimétrico sobre las micro-animaciones y efectos de 'glassmorphism' sin depender de frameworks pesados. El backend, robusto y ultrarrápido, está construido en Go (Golang) con Gin y GORM. Incluye un panel administrativo (CMS) personalizado y protegido por JWT para la gestión integral del inventario, permitiendo administrar productos, precios de oferta, stock y la vinculación dinámica de imágenes según las variantes de color elegidas por el cliente. Todo respaldado por una base de datos PostgreSQL.",
-    tags: ["Vue.js", "Vite", "Go (Golang)", "Gin", "GORM", "PostgreSQL", "Vanilla CSS", "E-Commerce"],
+    titleEn: "Bella Boutique - Premium E-Commerce",
+    description: "E-commerce de diseño exclusivo con frontend reactivo en Vue.js (Vite) y CSS Vanilla puro. Backend de alto rendimiento programado en Go (Golang) con Gin y GORM sobre base de datos relacional PostgreSQL. Panel de control (CMS) protegido por JWT para la gestión en tiempo real de inventario, stock, variantes y precios.",
+    descriptionEn: "Bespoke e-commerce platform built with Vue.js (Vite) and pure Vanilla CSS. High-throughput backend built with Go (Golang), Gin, and GORM backed by PostgreSQL. Includes a JWT-protected administration dashboard for real-time inventory tracking, variant pricing, and stock reconciliation.",
+    tags: ["Vue.js", "Go (Golang)", "Gin", "GORM", "PostgreSQL", "E-Commerce", "Inventory Management"],
     imageUrl: "/images/bella.png",
     link: "https://bellaboutique-azure.vercel.app/"
   },
   {
-    title: "Nido - Organizador Familiar Full Stack",
-    description: "Nido es una plataforma integral diseñada para facilitar la organización y comunicación dentro del núcleo familiar. Cuenta con un tablero Kanban interactivo (Drag & Drop) para el seguimiento de tareas, un calendario sincronizado para eventos y un sistema de chat integrado. Desarrollada con una arquitectura cliente-servidor robusta: el backend fue construido con Java y Spring Boot utilizando Spring Security y JWT para una autenticación sin estado (stateless), mientras que el frontend está desarrollado en Next.js con Tailwind CSS, ofreciendo una experiencia fluida, modo oscuro dinámico (glassmorphism) y total responsividad.",
-    tags: ["Next.js", "Java", "Spring Boot", "Spring Security", "PostgreSQL", "Tailwind CSS", "Framer Motion"],
+    title: "Nido - Organizador Familiar (Spring Boot)",
+    titleEn: "Nido - Family Organizer (Spring Boot)",
+    description: "Plataforma de organización familiar desarrollada con una arquitectura desacoplada: backend robusto en Java con Spring Boot, Spring Security y autenticación stateless mediante JWT. Frontend en Next.js con Tailwind CSS y Framer Motion con persistencia de eventos y tareas en PostgreSQL.",
+    descriptionEn: "Family task management platform built with decoupled architecture: robust Java backend with Spring Boot, Spring Security, and stateless JWT authentication. Next.js frontend with Tailwind CSS, Framer Motion, and relational PostgreSQL persistence.",
+    tags: ["Next.js", "Java", "Spring Boot", "Spring Security", "PostgreSQL", "Tailwind CSS"],
     imageUrl: "/images/nido.png",
     link: "https://family-organizer-nine.vercel.app/"
   },
   {
-    title: "Congreso de Logista y Transporte UNAB",
-    description: "Página oficial del Congreso De Logística y Transporte de la Universidad Nacional Guillermo Brown",
-    tags: ["Django", "React", "Tailwind"],
+    title: "Congreso de Logística y Transporte UNAB",
+    titleEn: "UNAB Logistics & Transport Congress",
+    description: "Sitio web oficial del Congreso de Logística y Transporte de la Universidad Nacional Guillermo Brown. Presentación de cronograma de actividades, paneles académicos, disertantes y formulario de acreditación de participantes.",
+    descriptionEn: "Official website for the Logistics and Transport Congress at Universidad Nacional Guillermo Brown. Features conference agenda, keynote speaker bios, and participant accreditation forms.",
+    tags: ["Django", "React", "Tailwind CSS", "Python"],
     imageUrl: "images/congreso.png",
     link: "https://www.congresologistica.unab.edu.ar/"
   },
   {
-    title: "RadioGo",
-    description: "Pagina web para una radio online. La página permite a los usuarios escuchar la transmisión en vivo, ver el horario de programas y contactar a la estación.",
+    title: "RadioGo - Streaming Online",
+    titleEn: "RadioGo - Online Audio Streaming",
+    description: "Portal web para emisora de radio con transmisión de audio en vivo de baja latencia mediante protocolo IceCast, programación diaria dinámica y canal de interacción con oyentes.",
+    descriptionEn: "Online web radio portal featuring live low-latency audio streaming via IceCast protocol, dynamic program scheduling, and interactive listener contact channels.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "IceCast"],
     imageUrl: "/images/radiogo.webp",
     link: "https://www.radiogo.com.ar/"
   },
   {
     title: "Landing Page de Folkode",
-    description: "Construcción de una landing page para Folkode, un equipo de desarolladores de software. La página presenta información sobre los proyectos que armo el equipo, testimonios de clientes y un formulario de contacto.",
+    titleEn: "Folkode - Corporate Software Landing",
+    description: "Página institucional para equipo de desarrollo de software Folkode. Presentación de portfolio comercial, casos de éxito, testimonios de clientes y canal directo de captación de prospectos.",
+    descriptionEn: "Corporate landing page for software development team Folkode. Showcases project portfolio, client success stories, customer reviews, and direct lead generation contact channels.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
     imageUrl: "/images/folkode.png",
     link: "https://folkode.com.ar/"
   },
 ];
 
-export const certificatesData = [
+export const certificatesData: CertificateItem[] = [
   {
     title: "Javascript / Node.js",
+    titleEn: "Javascript & Node.js Backend Development",
     issuer: "Codo a Codo 4.0",
     date: "2024",
     fileUrl: "/certificates/node.js.pdf",
   },
   {
     title: "Fullstack Java",
+    titleEn: "Full Stack Java Development",
     issuer: "Codo a Codo 4.0",
     date: "2023-2024",
     fileUrl: "/certificates/java.pdf",
   },
+
+  {
+    title: "Desarrollo con IA",
+    titleEn: "AI Develope",
+    issuer: "Big School",
+    date: "2023-2024",
+    fileUrl: "/certificates/Certificado-Matias-Daniel-Alessandrello-jva8cdbv.pdf",
+  },
+
+  {
+    title: "Inmersion Agentes de IA en la practica",
+    titleEn: "Full Stack Java Development",
+    issuer: "Daxus Latam",
+    date: "2023-2024",
+    fileUrl: "/Certificado-Daxus.pdf",
+  },
+
+
   {
     title: "Base de Datos SQL",
+    titleEn: "Relational SQL Databases",
     issuer: "Universidad Nacional Guillermo Brown",
     date: "2024",
     fileUrl: "/certificates/SQL.pdf",
   },
   {
     title: "Programación con JavaScript",
+    titleEn: "JavaScript Programming",
     issuer: "Fundación Telefónica Movistar",
     date: "2023",
     fileUrl: "/certificates/telefonica-javascript.pdf",
   },
   {
     title: "Diseño Web con HTML5 y CSS",
+    titleEn: "Web Design with HTML5 & CSS",
     issuer: "Fundación Telefónica Movistar",
     date: "2023",
     fileUrl: "/certificates/telefonica-web.pdf",
   },
-  // ... Agrega más certificados aquí
-] as const;
+];

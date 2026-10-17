@@ -6,6 +6,7 @@ import DonutChart from "../components/DonutChart";
 import { certificatesData } from "../../lib/data";
 import { FileText, Download } from "lucide-react";
 import { useTheme } from 'next-themes';
+import { useLanguage } from '@/context/LanguageContext';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
@@ -32,6 +33,7 @@ const BackgroundParticles = () => (
 
 export default function Home() {
   const { theme } = useTheme();
+  const { t, language } = useLanguage();
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -39,21 +41,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Esta función se ejecuta solo cuando 'mounted' cambia a 'true'
     if (mounted) {
       const hash = window.location.hash;
       if (hash) {
         const element = document.querySelector(hash);
         if (element) {
-          // Usamos un pequeño delay para asegurar que el DOM 
-          // esté completamente "pintado" antes de hacer scroll.
           setTimeout(() => {
             element.scrollIntoView({ behavior: "smooth" });
           }, 100);
         }
       }
     }
-  }, [mounted]); // <-- Se activa cuando 'mounted' cambia
+  }, [mounted]);
 
   if (!mounted) {
     return null;
@@ -106,26 +105,25 @@ export default function Home() {
                        ${theme === 'light' ? 'from-purple-400 to-pink-600' : 'from-green-800 to-green-200'}`}
             variants={itemVariants}
           >
-            Hola, soy Matías
+            {t.hero.greeting}
           </motion.h1>
 
           <motion.h2
-            className={`text-2xl md:text-3xl font-semibold mb-8 bg-clip-text text-transparent bg-gradient-to-r
-              transition-colors duration-1500 ease-in-out
+            className={`text-xl sm:text-2xl md:text-3xl font-semibold mb-8 bg-clip-text text-transparent bg-gradient-to-r
+              transition-colors duration-1500 ease-in-out max-w-3xl mx-auto leading-snug
                        ${theme === 'light'
-                ? 'from-purple-500 to-pink-700'
-                : 'from-green-200 to-green-800'}`}
+                ? 'from-purple-300 via-pink-400 to-pink-600'
+                : 'from-green-200 via-emerald-300 to-green-600'}`}
             variants={itemVariants}
           >
-            Desarrollador Full Stack
+            {t.hero.subtitle}
           </motion.h2>
 
           <motion.p
-            className="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed opacity-90"
             variants={itemVariants}
           >
-            Creo experiencias digitales excepcionales con las últimas tecnologías web.
-            Mi pasión es transformar ideas en soluciones innovadoras y funcionales.
+            {t.hero.description}
           </motion.p>
 
           <motion.div
@@ -144,13 +142,12 @@ export default function Home() {
                   : 'border-green-400 text-green-200 hover:bg-green-600/70'
                 }`}
             >
-              Ver Proyectos
+              {t.hero.viewProjects}
             </Link>
 
             <Link
               href="#about"
-              className={`px-8 py-3  rounded-lg font-medium transform hover:scale-120 
-             
+              className={`px-8 py-3 rounded-lg font-medium transform hover:scale-120 
              transition-[transform,background-color,border-color]
              duration-[1000ms,1500ms,1500ms]
              ease-in-out
@@ -160,13 +157,12 @@ export default function Home() {
                   : 'bg-green-600 hover:bg-green-800 text-white'
                 }`}
             >
-              Sobre Mí
+              {t.hero.aboutMe}
             </Link>
 
             <Link
               href="/contact"
               className={`px-8 py-3 border rounded-lg font-medium transform hover:scale-110 
-            
              transition-[transform,background-color,border-color]
              duration-[500ms,300ms,1300ms]
              ease-in-out
@@ -176,7 +172,7 @@ export default function Home() {
                   : 'border-green-400 text-green-200 hover:bg-green-600/70'
                 }`}
             >
-              Contactarme
+              {t.hero.contactMe}
             </Link>
           </motion.div>
         </motion.div>
@@ -206,58 +202,50 @@ export default function Home() {
         id="technologies"
         className={`py-20 px-4 transition-colors duration-1500 ease-in-out
           ${theme === 'light'
-            ? 'bg-white/10' // Contraste claro
-            : 'bg-emerald-900/30' // Contraste oscuro
+            ? 'bg-white/10'
+            : 'bg-emerald-900/30'
           }`}
       >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Tecnologías</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">{t.technologies.title}</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
             <BackgroundParticles />
             {[
-              // Frontend & Core
+              // Data & Analytics (Destacado)
+              { name: "R Language", icon: "📊" },
+              { name: "ggplot2", icon: "📈" },
+              { name: "SQL Modeling", icon: "📐" },
+              { name: "Data Analytics", icon: "📉" },
+
+              // Backend & Databases
+              { name: "PostgreSQL", icon: "🐘" },
+              { name: "SQLite", icon: "🪶" },
+              { name: "Supabase", icon: "⚡" },
+              { name: "Python", icon: "🐍" },
+              { name: "FastAPI", icon: "🏎️" },
+              { name: "Django", icon: "🚀" },
+              { name: "Go (Golang)", icon: "🐹" },
+              { name: ".NET 9", icon: "🌐" },
+              { name: "C#", icon: "🔷" },
+              { name: "Entity Framework", icon: "🧩" },
+              { name: "Java", icon: "☕" },
+              { name: "Spring Boot", icon: "🌱" },
+              { name: "Spring", icon: "🍃" },
+              { name: "Node.js", icon: "🟢" },
+              { name: "Express", icon: "🚂" },
+              { name: "Nest.js", icon: "🦁" },
+              { name: "GraphQL", icon: "🔺" },
+
+              // Frontend & Mobile
               { name: "React", icon: "⚛️" },
               { name: "Next.js", icon: "▲" },
               { name: "Vue.js", icon: "🖖" },
               { name: "TypeScript", icon: "📘" },
               { name: "Javascript", icon: "⚡️" },
               { name: "Tailwind CSS", icon: "🎨" },
-
-              // Microsoft & .NET Ecosystem
-              { name: "C#", icon: "🔷" },
-              { name: ".NET 9", icon: "🌐" },
-              { name: "Entity Framework", icon: "🧩" },
-
-              // Node Ecosystem
-              { name: "Node.js", icon: "🟢" },
-              { name: "Express", icon: "🚂" },
-              { name: "Nest.js", icon: "🦁" },
-
-              // Python Ecosystem
-              { name: "Python", icon: "🐍" },
-              { name: "FastAPI", icon: "🏎️" },
-              { name: "Django", icon: "🚀" },
-              { name: "PyQt", icon: "🖼️" },
-
-              // Java Ecosystem
-              { name: "Java", icon: "☕" },
-              { name: "Spring Boot", icon: "🌱" },
-              { name: "Spring", icon: "🍃" },
-
-              // Go Ecosystem
-              { name: "Go", icon: "🐹" },
-
-              // Mobile Ecosystem
               { name: "React Native", icon: "📱" },
               { name: "Kotlin", icon: "🤖" },
               { name: "Android Studio", icon: "🛠️" },
-
-              // Data & Backend Services
-              { name: "PostgreSQL", icon: "🐘" },
-              { name: "SQLite", icon: "🪶" },
-              { name: "Supabase", icon: "⚡" },
-              { name: "GraphQL", icon: "🔺" },
-              { name: "Hibernate", icon: "🗄️" },
 
               // DevOps & Cloud
               { name: "Docker", icon: "🐳" },
@@ -268,10 +256,10 @@ export default function Home() {
               <motion.div
                 key={index}
                 className={`p-4 rounded-lg text-center backdrop-blur-sm 
-                    transition-colors duration-1500 ease-in-out
+                    transition-colors duration-1500 ease-in-out border
                     ${theme === 'light'
-                    ? 'bg-white/20 hover:bg-white/30'
-                    : 'bg-emerald-700/50 hover:bg-emerald-900/70'
+                    ? 'bg-white/20 hover:bg-white/30 border-purple-300/30'
+                    : 'bg-emerald-700/50 hover:bg-emerald-900/70 border-emerald-500/30'
                   }`}
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -280,14 +268,15 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="text-3xl mb-2">{tech.icon}</div>
-                <h3 className="font-medium">{tech.name}</h3>
+                <h3 className="font-medium text-sm sm:text-base">{tech.name}</h3>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      <section id="about" className="py-20 px-4">
 
+      {/* Sección Sobre Mí */}
+      <section id="about" className="py-20 px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
             className={`p-8 rounded-2xl backdrop-blur-sm border flex flex-col lg:flex-row items-center gap-8 lg:gap-12
@@ -301,79 +290,78 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-
             <div className="lg:w-1/2 text-center lg:text-left">
               <div className="mb-6">
                 <div className={`
-    w-40 h-40 rounded-full 
-    block mx-auto lg:mx-4 
-    border-4 
-    ${theme === 'light' ? 'border-purple-400' : 'border-green-400'}
-    transition-colors duration-1500 ease-in-out
-    overflow-hidden  
-  `}>
+                  w-40 h-40 rounded-full 
+                  block mx-auto lg:mx-4 
+                  border-4 
+                  ${theme === 'light' ? 'border-purple-400' : 'border-green-400'}
+                  transition-colors duration-1500 ease-in-out
+                  overflow-hidden  
+                `}>
                   <Image
                     src="/images/matias.png"
                     alt="Foto de perfil de Matias Alessandrello"
                     width={160}
                     height={160}
                     className={`
-        w-40 h-40 rounded-full object-cover 
-        object-[50%_65%]
-        scale-115
-        -translate-x-2
-        block mx-auto lg:mx-4 
-        ${theme === 'light' ? 'border-purple-400' : 'border-green-400'}
-        transition-colors duration-1500 ease-in-out
-      `}
-                    priority // <-- Añade 'priority' si esta foto está "above the fold" (visible al cargar)
+                      w-40 h-40 rounded-full object-cover 
+                      object-[50%_65%]
+                      scale-115
+                      -translate-x-2
+                      block mx-auto lg:mx-4 
+                      ${theme === 'light' ? 'border-purple-400' : 'border-green-400'}
+                      transition-colors duration-1500 ease-in-out
+                    `}
+                    priority
                   />
                 </div>
               </div>
-              <h2 className="text-3xl font-bold mb-6">Sobre Mí</h2>
+              <h2 className="text-3xl font-bold mb-6">{t.about.title}</h2>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
-                Soy un desarrollador apasionado por crear soluciones tecnológicas que impacten positivamente. Disfruto enfrentando nuevos desafíos y aprendiendo constantemente.
-              </p>
-              <p className="text-lg mb-4 leading-relaxed lg:text-justify" >
-                Actualmente estoy cursando la <span className="font-bold text">Tecnicatura en Programación</span> en la Universidad Nacional Guillermo Brown, donde llevo completado el {currentCareerProgress}% de la carrera.
-              </p>
-              <p className="text-lg mb-4 leading-relaxed lg:text-justify" >
-                También estoy cursando la carrera de <span className="font-bold text">Analista Universitario de Gestión de Riesgos Cibernéticos</span>, en la Universidad de la Defensa Nacional donde llevo completado el {currentCyberRiskProgress}% de la carrera.
+                {t.about.p1}
               </p>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
-                Finalicé la<span className="font-bold"> Licenciatura en Composición con Medios Electroacústicos</span>, en la Universidad Nacional de Quilmes, esta carrera fue mi acercamiento y mi actual pasión por la computación y programación.
+                {t.about.p2_1}<span className="font-bold text">{t.about.p2_bold}</span>{t.about.p2_2}{currentCareerProgress}{t.about.p2_3}
               </p>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
-                Cuando no estoy programando, me gusta componer música y explorar nuevas tecnologías emergentes.
+                {t.about.p3_1}<span className="font-bold text">{t.about.p3_bold}</span>{t.about.p3_2}{currentCyberRiskProgress}{t.about.p3_3}
               </p>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
-                Fuera del ámbito tecnológico, trabajé como administrativo encargado del area de Urgencias e Internaciones en la Guardia del Sanatorio Juncal desde 2015 - 2026.
+                {t.about.p4_1}<span className="font-bold">{t.about.p4_bold}</span>{t.about.p4_2}
               </p>
               <p className="text-lg mb-4 leading-relaxed lg:text-justify">
-                Para más información puedes descargar mi Curriculum Vitae
+                {t.about.p5}
+              </p>
+              <p className="text-lg mb-4 leading-relaxed lg:text-justify">
+                {t.about.p6}
+              </p>
+              <p className="text-lg mb-4 leading-relaxed lg:text-justify">
+                {t.about.p7}
               </p>
               <a
-                href="/certificates/CV.pdf"
-                download
+                href="/certificates/Resume_Matias_Daniel_Alessandrello.pdf"
+                download="Resume_Matias_Daniel_Alessandrello.pdf"
                 className={`
-              inline-flex items-center justify-center gap-2
-              px-8 py-3 rounded-lg font-medium transform hover:scale-110 
-              transition-[transform,background-color,border-color]
-              duration-[1000ms,1500ms,1500ms]
-              ease-in-out
-              mt-6
-              ${theme === 'light'
+                  inline-flex items-center justify-center gap-2
+                  px-8 py-3 rounded-lg font-medium transform hover:scale-110 
+                  transition-[transform,background-color,border-color]
+                  duration-[1000ms,1500ms,1500ms]
+                  ease-in-out
+                  mt-6
+                  ${theme === 'light'
                     ? 'bg-purple-600 hover:bg-purple-700 text-white'
                     : 'bg-green-600 hover:bg-green-800 text-white'
                   }
-            `}
+                `}
               >
-                Descargar CV
+                {t.about.downloadCv}
                 <Download className="w-5 h-5" />
               </a>
             </div>
-            <div className="lg:w-1/2 flex flex-wrap justify-center items-center gap-8 mt-6 lg:mt-0">
 
+            <div className="lg:w-1/2 flex flex-wrap justify-center items-center gap-8 mt-6 lg:mt-0">
               <div className="flex flex-col items-center gap-2">
                 <DonutChart
                   percentage={currentCareerProgress}
@@ -382,7 +370,7 @@ export default function Home() {
                   primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
                   secondaryColor={theme === 'light' ? '#5c595fff' : '#4b5563'}
                 />
-                <p className="text-sm font-semibold text-center max-w-[150px]">Tecnicatura en Programación</p>
+                <p className="text-sm font-semibold text-center max-w-[150px]">{t.about.donutProgrammer}</p>
               </div>
 
               <div className="flex flex-col items-center gap-2">
@@ -393,7 +381,7 @@ export default function Home() {
                   primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
                   secondaryColor={theme === 'light' ? '#5c595fff' : '#4b5563'}
                 />
-                <p className="text-sm font-semibold text-center max-w-[150px]">Analista Universitario de Gestión de Riesgos Cibernéticos</p>
+                <p className="text-sm font-semibold text-center max-w-[150px]">{t.about.donutCyber}</p>
               </div>
 
               <div className="flex flex-col items-center gap-2">
@@ -404,7 +392,7 @@ export default function Home() {
                   primaryColor={theme === 'light' ? '#a855f7' : '#10b981'}
                   secondaryColor={theme === 'light' ? '#5c595fff' : '#4b5563'}
                 />
-                <p className="text-sm font-semibold text-center max-w-[150px]">Lic. en Composición Electroacústica</p>
+                <p className="text-sm font-semibold text-center max-w-[150px]">{t.about.donutMusic}</p>
               </div>
             </div>
           </motion.div>
@@ -418,11 +406,11 @@ export default function Home() {
                    ${theme === 'light' ? 'bg-white/10' : 'bg-emerald-900/50'}`}
       >
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Formación Destacada</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">{t.featuredCertificates.title}</h2>
 
           <p className={`text-center text-xl mb-12 transition-colors duration-150 ease-in-out
             ${theme === 'light' ? 'text-purple-300' : 'text-green-300'}
-             `}>Estos son algunos de los cursos y certificaciones que he completado.</p>
+             `}>{t.featuredCertificates.subtitle}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {certificatesData.slice(0, 3).map((cert, index) => (
@@ -441,7 +429,9 @@ export default function Home() {
               >
                 <FileText className={`w-8 h-8 mb-3 transition-colors duration-150 ease-in-out
                                     ${theme === 'light' ? 'text-purple-400' : 'text-green-400'}`} />
-                <h3 className="font-bold text-xl">{cert.title}</h3>
+                <h3 className="font-bold text-xl">
+                  {language === 'en' && cert.titleEn ? cert.titleEn : cert.title}
+                </h3>
                 <p className={`text-base transition-colors duration-150 ease-in-out
                                ${theme === 'light' ? 'text-gray-300' : 'text-slate-400'}`}>{cert.issuer}</p>
               </motion.div>
@@ -464,7 +454,7 @@ export default function Home() {
                   : 'bg-green-600 hover:bg-green-700 text-white'
                 }`}
             >
-              Ver Todos los Certificados
+              {t.featuredCertificates.viewAll}
             </Link>
           </motion.div>
         </div>

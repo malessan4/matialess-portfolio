@@ -4,14 +4,17 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 import { useTheme } from 'next-themes';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
-  // 2. Añade un estado para el menú móvil
+  // Añade un estado para el menú móvil
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -49,9 +52,8 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link
               href="/"
-              // 3. Añade un onClick para cerrar el menú si se hace clic en el logo
               onClick={() => setIsMenuOpen(false)}
-              className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r
+              className={`text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r
                 transition-colors duration-1500 ease-in-out
                 ${theme === 'light'
                   ? 'from-purple-500 to-pink-700'
@@ -64,79 +66,80 @@ export default function Navbar() {
 
           {/* --- MENÚ DE ESCRITORIO --- */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-6 lg:ml-10 flex items-center space-x-3 lg:space-x-4">
               <Link
                 href="/projects"
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
+                  hover:text-white px-3 py-2 rounded-md text-lg lg:text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
-                Proyectos
+                {t.nav.projects}
               </Link>
               <Link
                 href="/#about"
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
+                  hover:text-white px-3 py-2 rounded-md text-lg lg:text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
-                Sobre Mí
+                {t.nav.about}
               </Link>
               <Link
                 href="/#technologies"
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
+                  hover:text-white px-3 py-2 rounded-md text-lg lg:text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
-                Tecnologías
+                {t.nav.technologies}
               </Link>
               <Link
                 href="/certificados"
                 className={`
                   ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
                   ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
-                  hover:text-white px-3 py-2 rounded-md text-xl font-medium
+                  hover:text-white px-3 py-2 rounded-md text-lg lg:text-xl font-medium
                   transition-all duration-200 ease-in-out hover:scale-105 inline-block
                 `}
               >
-                Certificados
+                {t.nav.certificates}
               </Link>
               <Link
                 href="/contact"
                 className={`
                   ${theme === 'light' ? 'bg-purple-600 hover:bg-purple-700' : 'bg-green-600 hover:bg-green-700'}
                   text-white
-                  px-6 py-2 rounded-md text-xl font-medium
+                  px-5 py-2 rounded-md text-lg lg:text-xl font-medium
                   transition-all duration-1500 ease-in-out hover:scale-105 inline-block
                 `}
               >
-                Contacto
+                {t.nav.contact}
               </Link>
+              <LanguageToggle />
               <ThemeToggle />
             </div>
           </div>
 
-          {/* --- 4. BOTÓN HAMBURGUESA Y THEME TOGGLE (MÓVIL) --- */}
-          <div className="-mr-2 flex items-center md:hidden">
+          {/* --- BOTÓN HAMBURGUESA, IDIOMA Y TEMA (MÓVIL) --- */}
+          <div className="-mr-2 flex items-center gap-2 md:hidden">
+            <LanguageToggle />
             <ThemeToggle />
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)} // Alterna el estado
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className={`ml-3 inline-flex items-center justify-center p-2 rounded-md transition duration-150 ease-in-out
+              className={`p-2 rounded-md transition duration-150 ease-in-out
                 ${theme === 'light' ? 'text-purple-500 hover:text-purple-700' : 'text-green-300 hover:text-green-100'}`}
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Abrir menú principal</span>
-              {/* Icono de X o Hamburguesa según el estado */}
               {!isMenuOpen ? (
                 <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -152,73 +155,67 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* --- 5. PANEL DE MENÚ MÓVIL DESPLEGABLE --- */}
+      {/* --- PANEL DE MENÚ MÓVIL DESPLEGABLE --- */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
             id="mobile-menu"
-            className="md:hidden" // Oculto en escritorio
-            initial={{ opacity: 0, y: -20 }} // Animación inicial
-            animate={{ opacity: 1, y: 0 }} // Animación de entrada
-            exit={{ opacity: 0, y: -20 }} // Animación de salida
+            className="md:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            {/* Fondo sólido para el menú desplegable */}
-            <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gradient-to-r
-                transition-colors duration-1500 ease-in-out
+            <div className={`px-4 pt-3 pb-4 space-y-2 bg-gradient-to-r
+                transition-colors duration-1500 ease-in-out shadow-xl
               ${theme === 'light'
-                ? 'bg-purple-700/95'
-                : 'bg-emerald-950/95'
+                ? 'bg-purple-900/95 border-b border-purple-500/40'
+                : 'bg-emerald-950/95 border-b border-emerald-700/40'
               }
             `}>
-              {/* Links adaptados a móvil */}
               <Link
                 href="/projects"
-                onClick={() => setIsMenuOpen(false)} // Cierra el menú al hacer clic
+                onClick={() => setIsMenuOpen(false)}
                 className={`
-                  ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
-                  ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+                  ${theme === 'light' ? 'text-gray-200 hover:bg-purple-800' : 'text-gray-200 hover:bg-slate-800'}
                   hover:text-white px-3 py-2 rounded-md text-base font-medium
                   transition-all duration-200 ease-in-out block w-full text-left
                 `}
               >
-                Proyectos
+                {t.nav.projects}
               </Link>
               <Link
                 href="/#about"
                 onClick={() => setIsMenuOpen(false)}
                 className={`
-                  ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
-                  ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+                  ${theme === 'light' ? 'text-gray-200 hover:bg-purple-800' : 'text-gray-200 hover:bg-slate-800'}
                   hover:text-white px-3 py-2 rounded-md text-base font-medium
                   transition-all duration-200 ease-in-out block w-full text-left
                 `}
               >
-                Sobre Mí
+                {t.nav.about}
               </Link>
               <Link
                 href="/#technologies"
                 onClick={() => setIsMenuOpen(false)}
                 className={`
-                  ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
-                  ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+                  ${theme === 'light' ? 'text-gray-200 hover:bg-purple-800' : 'text-gray-200 hover:bg-slate-800'}
                   hover:text-white px-3 py-2 rounded-md text-base font-medium
                   transition-all duration-200 ease-in-out block w-full text-left
                 `}
               >
-                Tecnologías
+                {t.nav.technologies}
               </Link>
               <Link
                 href="/certificados"
                 onClick={() => setIsMenuOpen(false)}
                 className={`
-                  ${theme === 'light' ? 'text-gray-300' : 'text-gray-200'}
-                  ${theme === 'light' ? 'hover:bg-violet-700' : 'hover:bg-slate-800'}
+                  ${theme === 'light' ? 'text-gray-200 hover:bg-purple-800' : 'text-gray-200 hover:bg-slate-800'}
                   hover:text-white px-3 py-2 rounded-md text-base font-medium
                   transition-all duration-200 ease-in-out block w-full text-left
                 `}
               >
-                Certificados
+                {t.nav.certificates}
               </Link>
               <Link
                 href="/contact"
@@ -231,7 +228,7 @@ export default function Navbar() {
                   mt-2
                 `}
               >
-                Contacto
+                {t.nav.contact}
               </Link>
             </div>
           </motion.div>

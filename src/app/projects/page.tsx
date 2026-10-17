@@ -6,9 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ExternalLink, Copy, User, Lock, Check } from "lucide-react";
 import { useTheme } from 'next-themes';
+import { useLanguage } from '@/context/LanguageContext';
 
-// --- NUEVO COMPONENTE PARA LAS CREDENCIALES ---
-const CredentialBadge = ({ text, type }: { text: string, type: 'user' | 'pass' }) => {
+// --- COMPONENTE PARA LAS CREDENCIALES ---
+const CredentialBadge = ({ text, type, copiedText }: { text: string, type: 'user' | 'pass', copiedText: string }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = (e: React.MouseEvent) => {
@@ -49,23 +50,23 @@ const CredentialBadge = ({ text, type }: { text: string, type: 'user' | 'pass' }
                     animate={{ opacity: 1, y: -25 }}
                     className="absolute left-1/2 -translate-x-1/2 bg-green-600 text-[10px] text-white px-2 py-0.5 rounded shadow-xl whitespace-nowrap z-50"
                 >
-                    ¡Copiado!
+                    {copiedText}
                 </motion.span>
             )}
         </button>
     );
 };
 
-// --- FUNCIÓN PARA PROCESAR EL TEXTO ---
-const highlightCredentials = (text: string) => {
+// --- FUNCIÓN PARA PROCESAR EL TEXTO Y DESTACAR CREDENCIALES ---
+const highlightCredentials = (text: string, copiedText: string) => {
     const user = "invitado@consulmedic.ar";
     const pass = "invi1234";
     const regex = new RegExp(`(${user}|${pass})`, "g");
     const parts = text.split(regex);
 
     return parts.map((part, i) => {
-        if (part === user) return <CredentialBadge key={i} text={user} type="user" />;
-        if (part === pass) return <CredentialBadge key={i} text={pass} type="pass" />;
+        if (part === user) return <CredentialBadge key={i} text={user} type="user" copiedText={copiedText} />;
+        if (part === pass) return <CredentialBadge key={i} text={pass} type="pass" copiedText={copiedText} />;
         return part;
     });
 };
@@ -97,6 +98,7 @@ const itemVariants = {
 
 export default function ProjectsPage() {
     const { theme } = useTheme();
+    const { t, language } = useLanguage();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -120,65 +122,70 @@ export default function ProjectsPage() {
                     className={`text-5xl md:text-7xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r 
                        ${theme === 'light' ? 'from-purple-400 to-pink-600' : 'from-green-800 to-green-300'}`}
                 >
-                    Mis Proyectos
+                    {t.projectsPage.title}
                 </motion.h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
-                    {projectsData.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            className={`rounded-lg shadow-lg overflow-hidden flex flex-col group border transition-all duration-500 hover:scale-[1.02]
-                            ${theme === 'light' ? 'bg-purple-900/40 border-purple-600/50' : 'bg-slate-800/40 border-slate-500/50'}`}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                        >
-                            <div className="overflow-hidden h-48 relative">
-                                <img
-                                    src={project.imageUrl || 'https://placehold.co/600x400/1e293b/9333ea?text=Proyecto'}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                            </div>
+                    {projectsData.map((project, index) => {
+                        const projectTitle = language === 'en' && project.titleEn ? project.titleEn : project.title;
+                        const projectDesc = language === 'en' && project.descriptionEn ? project.descriptionEn : project.description;
 
-                            <div className="p-8 flex flex-col flex-grow">
-                                <h2 className={`text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r 
-                                    ${theme === 'light' ? 'from-purple-300 to-pink-400' : 'from-green-400 to-green-200'}`}>
-                                    {project.title}
-                                </h2>
-
-                                {/* --- RENDERIZADO CONDICIONAL DE LA DESCRIPCIÓN --- */}
-                                <div className="text-slate-300 text-sm leading-relaxed flex-grow">
-                                    {project.title.includes("Consul-medic")
-                                        ? highlightCredentials(project.description)
-                                        : project.description}
+                        return (
+                            <motion.div
+                                key={index}
+                                className={`rounded-lg shadow-lg overflow-hidden flex flex-col group border transition-all duration-500 hover:scale-[1.02]
+                                ${theme === 'light' ? 'bg-purple-900/40 border-purple-600/50' : 'bg-slate-800/40 border-slate-500/50'}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
+                            >
+                                <div className="overflow-hidden h-48 relative bg-slate-900/60">
+                                    <img
+                                        src={project.imageUrl || 'https://placehold.co/600x400/1e293b/9333ea?text=Proyecto'}
+                                        alt={projectTitle}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
                                 </div>
 
-                                <div className="mt-6 flex flex-wrap gap-2">
-                                    {project.tags.map((tag, tagIndex) => (
-                                        <span key={tagIndex} className={`text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-md border
-                                            ${theme === 'light' ? 'bg-purple-800/50 border-purple-500 text-purple-200' : 'bg-green-900/50 border-green-700 text-green-200'}`}>
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
+                                <div className="p-8 flex flex-col flex-grow">
+                                    <h2 className={`text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r 
+                                        ${theme === 'light' ? 'from-purple-300 to-pink-400' : 'from-green-400 to-green-200'}`}>
+                                        {projectTitle}
+                                    </h2>
 
-                                <div className="mt-8">
-                                    <Link
-                                        href={project.link || "#"}
-                                        target="_blank"
-                                        className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold transition-all
-                                            ${theme === "light"
-                                                ? "bg-pink-700 hover:bg-pink-600 text-white shadow-[0_0_15px_rgba(190,24,93,0.5)]"
-                                                : "bg-green-700 hover:bg-green-600 text-white shadow-[0_0_15px_rgba(21,128,61,0.5)]"
-                                            }`}
-                                    >
-                                        Ver proyecto <ExternalLink className="w-4 h-4" />
-                                    </Link>
+                                    {/* --- RENDERIZADO DE LA DESCRIPCIÓN --- */}
+                                    <div className="text-slate-300 text-sm leading-relaxed flex-grow">
+                                        {project.title.includes("Consul-medic")
+                                            ? highlightCredentials(projectDesc, t.projectsPage.copied)
+                                            : projectDesc}
+                                    </div>
+
+                                    <div className="mt-6 flex flex-wrap gap-2">
+                                        {project.tags.map((tag, tagIndex) => (
+                                            <span key={tagIndex} className={`text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-md border
+                                                ${theme === 'light' ? 'bg-purple-800/50 border-purple-500 text-purple-200' : 'bg-green-900/50 border-green-700 text-green-200'}`}>
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-8">
+                                        <Link
+                                            href={project.link || "#"}
+                                            target="_blank"
+                                            className={`inline-flex items-center gap-2 px-6 py-2 rounded-full font-bold transition-all
+                                                ${theme === "light"
+                                                    ? "bg-pink-700 hover:bg-pink-600 text-white shadow-[0_0_15px_rgba(190,24,93,0.5)]"
+                                                    : "bg-green-700 hover:bg-green-600 text-white shadow-[0_0_15px_rgba(21,128,61,0.5)]"
+                                                }`}
+                                        >
+                                            {t.projectsPage.viewProject} <ExternalLink className="w-4 h-4" />
+                                        </Link>
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </main>

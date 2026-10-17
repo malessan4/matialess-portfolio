@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
+import { useLanguage } from '@/context/LanguageContext';
 import { useState, useEffect } from 'react';
 
 const BackgroundParticles = () => (
@@ -25,42 +26,47 @@ const BackgroundParticles = () => (
     </div>
 );
 
-
-// --- MEJORA: Página de contacto completamente rediseñada ---
-// En lugar de un formulario (que necesita un backend), proveemos formas de contacto directas y profesionales.
 export default function ContactPage() {
     const { theme } = useTheme();
+    const { t } = useLanguage();
     const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
         setMounted(true);
     }, []);
+
     if (!mounted) {
         return null;
     }
-
 
     const contactMethods = [
         {
             icon: <Mail className={`w-10 h-10 transition-colors duration-1500 ease-in-out
                        ${theme === 'light' ? 'text-purple-400' : 'text-green-500'} `} />,
-            title: 'Email',
+            title: t.contactPage.email,
             content: 'matialess@gmail.com',
             href: 'mailto:matialess@gmail.com',
         },
         {
             icon: <Linkedin className={`w-10 h-10 transition-colors duration-1500 ease-in-out
                        ${theme === 'light' ? 'text-purple-400' : 'text-green-500'} `} />,
-            title: 'LinkedIn',
+            title: t.contactPage.linkedin,
             content: 'matias-daniel-alessandrello',
             href: 'https://www.linkedin.com/in/matias-alessandrello',
         },
         {
-            icon: <Github className={`w-10 h-10   
-                        transition-colors duration-1500 ease-in-out
+            icon: <Github className={`w-10 h-10 transition-colors duration-1500 ease-in-out
                        ${theme === 'light' ? 'text-purple-400' : 'text-green-500'} `} />,
-            title: 'GitHub',
+            title: t.contactPage.github,
             content: 'malessan4',
             href: 'https://github.com/malessan4',
+        },
+        {
+            icon: <FileText className={`w-10 h-10 transition-colors duration-1500 ease-in-out
+                       ${theme === 'light' ? 'text-purple-400' : 'text-green-500'} `} />,
+            title: t.contactPage.cvTitle,
+            content: t.contactPage.downloadCv,
+            href: '/certificates/Resume_Matias_Daniel_Alessandrello.pdf',
         }
     ];
 
@@ -73,51 +79,50 @@ export default function ContactPage() {
             }`}
         >
             <BackgroundParticles />
-            <div className="container mx-auto max-w-4xl text-center">
+            <div className="container mx-auto max-w-4xl text-center z-10 py-12">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h1 className={`text-4xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r 
+                    <h1 className={`text-4xl md:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r 
                         transition-colors duration-1500 ease-in-out
                        ${theme === 'light' ? 'from-purple-400 to-pink-600' : 'from-green-800 to-green-200'}`}>
-                        Hablemos
+                        {t.contactPage.title}
                     </h1>
-                    <p className="text-lg md:text-xl text-purple-100 mb-12">
-                        Estoy disponible para nuevos proyectos y colaboraciones. <br /> No dudes en contactarme.
+                    <p className="text-lg md:text-xl text-purple-100 mb-12 max-w-2xl mx-auto opacity-90">
+                        {t.contactPage.subtitle}
                     </p>
                 </motion.div>
 
-                <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-colors duration-1500 ease-in-out
-                 ${theme === 'light'
-                        ? 'from-pink-900 via-purple-950 to-pink-900'
-                        : 'from-gray-900 via-green-900 to-gray-900'
-                    }`}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {contactMethods.map((method, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                            transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
                         >
-                            <Link href={method.href} target="_blank" rel="noopener noreferrer" className={`block p-8
-                             ${theme === 'light'
-                                    ? 'from-pink-900 via-purple-950 to-pink-900 hover:bg-slate-800/80 hover:border-purple-500'
-                                    : 'from-gray-900 via-green-900 to-gray-500  hover:bg-slate-800/80 hover:border-green-500'
-                                } bg-slate-800/50 rounded-2xl border border-slate-700/50 backdrop-blur-sm transition-all duration-300 h-full`}>
+                            <Link
+                                href={method.href}
+                                target={method.href.startsWith('mailto') ? '_self' : '_blank'}
+                                rel="noopener noreferrer"
+                                className={`block p-6 rounded-2xl border backdrop-blur-sm transition-all duration-300 h-full hover:scale-105
+                                  ${theme === 'light'
+                                    ? 'bg-purple-950/40 border-purple-500/40 hover:bg-purple-900/60 hover:border-pink-500'
+                                    : 'bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/80 hover:border-green-500'
+                                  }`}
+                            >
                                 <div className="flex justify-center mb-4">
                                     {method.icon}
                                 </div>
-                                <h2 className="text-2xl font-bold mb-2">{method.title}</h2>
-                                <p className="text-purple-100 break-all">{method.content}</p>
+                                <h2 className="text-xl font-bold mb-2">{method.title}</h2>
+                                <p className="text-sm text-purple-100/80 break-all">{method.content}</p>
                             </Link>
                         </motion.div>
                     ))}
                 </div>
             </div>
-
         </main>
-
     );
 }
