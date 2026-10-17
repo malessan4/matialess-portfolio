@@ -131,7 +131,7 @@ export const certificatesData: CertificateItem[] = [
     title: "Desarrollo con IA",
     titleEn: "AI Development",
     issuer: "Big School",
-    date: "2023-2024",
+    date: "2026",
     fileUrl: "/certificates/Certificado-Matias-Daniel-Alessandrello-jva8cdbv.pdf",
   },
 
@@ -139,7 +139,7 @@ export const certificatesData: CertificateItem[] = [
     title: "Inmersión Agentes de IA en la práctica",
     titleEn: "Practical AI Agents Immersion",
     issuer: "Daxus Latam",
-    date: "2023-2024",
+    date: "2026",
     fileUrl: "/certificates/Certificado-Daxus.pdf",
   },
 
